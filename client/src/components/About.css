@@ -1,0 +1,14 @@
+
+
+.About{
+    background-image: url('../images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    opacity: 0.85;
+}
+
+.about-text{
+    padding: 30px;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

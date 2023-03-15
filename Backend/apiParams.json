@@ -1,0 +1,30 @@
+{
+"discover" : {
+    "PATH": "discover/movie",
+    "PARAMS":{
+        "language" : "en-US",
+        "sort_by" : "popularity.desc",
+        "include_adult": false,
+        "include_video": false,
+        "page": 1,
+        "with_watch_monetization_types": "free"
+    }
+},
+"topRated":{
+    "PATH": "movie/top_rated",
+    "PARAMS":{
+        "language":"en-US",
+        "page": 1
+    }
+},
+
+"find" : {
+    "PATH":"search/multi",
+    "PARAMS":{
+        "language": "en-US",
+        "query": "kill",
+        "page": 1,
+        "include_adult": false
+    }
+}
+}

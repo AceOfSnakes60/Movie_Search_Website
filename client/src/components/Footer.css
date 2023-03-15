@@ -1,0 +1,39 @@
+.Container {
+    position:absolute;
+	bottom:0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(33,37,41);
+    padding: 15px;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.logo>img {
+    height: 100px;
+    float: left;
+    border-radius: 50%;
+}
+
+.logo>img>a {
+    cursor: pointer;
+}
+
+.social-media>a {
+    color: white;
+    font-size: 2rem;
+    padding: 5px;
+}
+
+.subscribe>button {
+    background-color: white;
+    border: 0.5px solid black;  
+    height: 30px;
+    padding: 2px;
+}
