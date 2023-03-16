@@ -1,11 +1,14 @@
 import React from 'react';
 import './About.css'
 
+
 function About() {
 
     return (
         <div className='About'>
             <div className='about-text'>
+                <h1>WHO WE ARE </h1>
+                <hr/>
                 <p>
                     Once upon a time, there was a group of film enthusiasts who loved to watch movies and
                     discuss them with their friends. However, they found it difficult to keep track of all

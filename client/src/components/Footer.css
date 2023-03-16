@@ -1,27 +1,35 @@
 .Container {
-    position:absolute;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background-color: rgb(33,37,41);
+    background-color: rgb(33, 37, 41);
     padding: 15px;
     color: white;
+    margin-top: auto;
 }
 
+
 .logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    display: inline-block;
+    margin-right: 40px;
+    vertical-align: middle;
 }
 
 .logo>img {
     height: 100px;
     float: left;
     border-radius: 50%;
+    padding: 5px;
 }
 
 .logo>img>a {
     cursor: pointer;
+}
+
+.logo h5 {
+    font-size: 1.2rem;
+    padding: 5px;
+    vertical-align: middle;
 }
 
 .social-media>a {
@@ -30,9 +38,78 @@
     padding: 5px;
 }
 
+.social-media h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.social-media p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.social-media a:hover {
+    color: #094e98;
+  }
+
+.social-media a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.contact {
+    display: inline-block;
+    margin-right: 40px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.contact h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.contact p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.contact a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+
 .subscribe>button {
     background-color: white;
-    border: 0.5px solid black;  
+    border: 0.5px solid black;
     height: 30px;
     padding: 2px;
+    background-color: #094e98;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+.subscribe input {
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.subscribe input::placeholder {
+    color: #ccc;
+}
+
+
+.subscribe button:hover {
+    background-color: #0e7df4;
 }

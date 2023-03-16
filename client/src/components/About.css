@@ -1,15 +1,36 @@
 
+.About {
+    background: rgb(148,187,233);
+    background: radial-gradient(circle, rgb(174, 205, 242) 80%, rgba(80, 100, 213, 0.746) 98%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.about-text {
+    max-width: 800px;
+    padding: 40px;
+    background-color: #f0fafc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    border-radius: 2rem;
+}
 
 .About{
     background-image: url('../images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
-    opacity: 0.85;
     height: 80%;
-}
-
-.about-text{
-    padding: 30px;
-    color: white;
+.about-text p {
+    margin: 20px 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.about-text h1 {
+    margin: 20px 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+

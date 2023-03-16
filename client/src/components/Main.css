@@ -1,18 +1,23 @@
-
-.main{
+.main {
     background-image: url('../images/background.jpg');
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
     border: none;
     font-size: 1vw;
     text-align: center;
     padding-bottom: 32px;
     padding-left: 10px;
     padding-top: 20px;
+    padding-bottom: 205px;
 }
 
-.search{
-    background-color: aliceblue;
+.star{
+    height: 20px;
+    width: 20px;
+}
+.search {
+    background-color: rgb(67, 69, 70, 0.6);
+    color: white;
     height: 100%;
     width: 10%;
     font-size: 1vw;
@@ -20,18 +25,20 @@
 
 }
 
-.chooseGenre{
-    background-color: rgb(65, 67, 68);
+.chooseGenre {
+    background-color: rgb(67, 69, 70, 0.6);
+    color: white;
     width: 200px;
-    height: 400px;
+    height: 619px;
     font-size: 1vw;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 110px;
 
 }
 
-.genres{
-    background-color: aliceblue;
+.genres {
+    background-color: rgb(67, 69, 70, 0.6);
+    color: white;
     width: 200px;
     font-size: 1vw;
     text-align: center;
@@ -40,42 +47,49 @@
     cursor: pointer;
 }
 
-.upcoming{
-    background-color: rgb(67, 69, 70);
-    width: 250px;
-    height: 500px;
+.genres:hover {
+    background-color: rgba(37, 38, 39, 0.6);
+}
+
+.upcoming {
+    background-color: rgb(67, 69, 70, 0.6);
+    color: white;
+    width: 400px;
+    height: 619px;
     font-size: 0.5vw;
     text-align: center;
     margin-left: 250px;
-    margin-top: -350px;
+    margin-top: -619px;
 }
 
 
-.upcomingMovie{
-    background-color: rgb(230, 78, 8);
-    width: 200px;
-    height: 100px;
+.upcomingMovie {
+    background-color: rgb(67, 69, 70, 0.6);
+    color: white;
+    width: 350px;
+    height: 172px;
     font-size: 1vw;
     text-align: center;
     margin-left: 25px;
     margin-top: 10px;
 }
 
-.randomMovie{
-    background-color: rgb(230, 78, 8);
-    width: 50%;
+.randomMovie {
+    background-color: rgba(76, 76, 76, 0);
+    width: 69%;
     height: 40%;
     font-size: 1vw;
     text-align: center;
     margin-left: 600px;
-    margin-top: -545px;
+    margin-top: -659px;
 }
 
-.randomMovieBlock{
-    background-color: rgb(67, 69, 70);
+.randomMovieBlock {
+    background-color: rgb(67, 69, 70, 0.6);
+    color: white;
     width: 20%;
     height: 300px;
-    font-size: 1.5vw;
+    font-size: 0.3px;
     text-align: center;
     margin-left: 10px;
     margin-top: 40px;
@@ -83,13 +97,20 @@
     margin-bottom: 40px;
 }
 
-.highestRated{
-    background-color: rgb(67, 69, 70);
-    width: 50%;
-    height: 200px;
+.randomMovieText {
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.highestRated {
+    background-color: rgb(67, 69, 70, 0.6);
+    color: white;
+    width: 57%;
+    height: 238px;
     font-size: 1.5vw;
     text-align: center;
-    margin-left: 600px;
+    margin-left: 720px;
     margin-top: 40px;
 }
 
@@ -97,9 +118,9 @@ table {
     border-collapse: collapse;
     width: 100%;
     border-color: antiquewhite;
-  }
+}
 
-  td {
+td {
     cursor: pointer;
   }
 
