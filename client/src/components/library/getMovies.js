@@ -1,20 +1,20 @@
 async function getMoviesFromApi() {
     const movies = await fetch("http://localhost:8000/api/movies/")
-        .then(response=>response.json())
+        .then(async response=> await response.json())
         .then(data=>{
             return data;
         })
-    return movies.results;
+    return movies;
 }
 
-const getMoviesByType = (type)=>{
-    const movies = fetch(`http://localhost:8000/api/movies/${type}`)
-    .then(response=>response.json())
+async function getMoviesByType(type){
+    const movies = await fetch(`http://localhost:8000/api/movies/${type}`)
+    .then(async response=>await response.json())
     .then(data=>{
         console.log(data);
         return data;
     })
-return movies.results;
+return movies;
 }
 
 export {getMoviesFromApi, getMoviesByType};

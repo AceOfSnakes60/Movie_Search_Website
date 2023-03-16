@@ -2,16 +2,14 @@ import {useState, useEffect} from 'react'
 import {getMoviesFromApi, getMoviesByType} from './library/getMovies'
 
 function Main() {
-    const [discoverMovies, setDiscoverMovies] = useState([])
-    const [upcomingMovies, setUpcomingMovies]= useState([]);
-    const [highestRated, setHighestRated]= useState([]);
+    const [discoverMovies, setDiscoverMovies] = useState()
+    const [upcomingMovies, setUpcomingMovies]= useState();
+    const [highestRated, setHighestRated]= useState();
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/api/movies/topRated`)
-        .then(response=>response.json())
-        .then(data=>setHighestRated(data.results))
-
-        console.log(highestRated);
+        //getMoviesFromApi().then(movies=>setDiscoverMovies(movies))
+        //getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies))
+        getMoviesByType("topRated").then(movies=>setHighestRated(movies))
     },[]);
 
     return(
@@ -37,15 +35,7 @@ function Main() {
             </div>
             <div className="highestRated">
                 TOP 5 MOVIES
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Year</th>
-                        <th>Rating</th>
-                    </tr>
-                    <ShowHighestRated movie={highestRated[0]}/>
-                    <ShowHighestRated movie={highestRated[1]}/>
-                </table>
+                <div>{highestRated!==undefined&&<ShowHighestRated movie={highestRated.results}/>}</div>
             </div>
         </div>
 
@@ -53,12 +43,13 @@ function Main() {
 }
 
 function ShowHighestRated(props){
+    console.log(props);
     return(                 
-    <tr>
-        <td>{props.movie.title}</td>
-        <td>{props.movie.release_date}</td>
-        <td>{props.movie.vote_average}</td>
-    </tr>
+    <div>
+        <h1>{props.movie[0].title}</h1>
+        <h2>{props.movie[0].release_date}</h2>
+        <h2>{props.movie[0].vote_average}</h2>
+    </div>
     )
 }
 
