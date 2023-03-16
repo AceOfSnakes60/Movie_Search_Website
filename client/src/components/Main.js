@@ -1,8 +1,11 @@
+import React from 'react';
+
 function Main() {
 
+    
     let content =
         <div className="main">
-            <input type="text" className="search" placeholder="Search for movies.." />
+            <input type="search" className="search" placeholder="Search for movies.." />
             <div className="chooseGenre">
                 <button className="genres">action</button>
                 <button className="genres">comedy</button>
