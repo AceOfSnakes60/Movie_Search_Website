@@ -1,5 +1,8 @@
+
 import {useState, useEffect} from 'react'
 import {getMoviesFromApi, getMoviesByType} from './library/getMovies'
+import React from 'react';
+
 
 function Main() {
     const [discoverMovies, setDiscoverMovies] = useState()
@@ -12,9 +15,10 @@ function Main() {
         getMoviesByType("topRated").then(movies=>setHighestRated(movies))
     },[]);
 
+
     return(
         <div className="main">
-            <input type="text" className="search" placeholder="Search for movies.." />
+            <input type="search" className="search" placeholder="Search for movies.." />
             <div className="chooseGenre">
                 <button className="genres">action</button>
                 <button className="genres">comedy</button>
