@@ -1,39 +1,10 @@
-import {useState, useEffect} from 'react'
-// import {getMoviesFromApi, getMoviesByType} from './library/getMovies'
+import React from 'react';
 
 function Main() {
-    // const [discoverMovies, setDiscoverMovies] = useState([])
-    // const [upcomingMovies, setUpcomingMovies]= useState([]);
-    const [highestRated, setHighestRated]= useState({});
 
-    
-    useEffect(() => {
-        const getData = async () => {
-            const response = await fetch(`http://localhost:8000/api/movies/topRated`)
-            const data = await response.json();
-            const result = data.results
-            setHighestRated(result);
-
-            console.log(highestRated)
-        }
-
-        getData().catch(e => console.error(e))
-    }, [])
-
-
-    // function ShowHighestRated(props){
-    //     return(                 
-    //     <tr>
-    //         <td>{props.movie.title}</td>
-    //         <td>{props.movie.release_date}</td>
-    //         <td>{props.movie.vote_average}</td>
-    //     </tr>
-    //     )
-    // }
-
-     return(
+    let content =
         <div className="main">
-            <input type="text" className="search" placeholder="Search for movies.." />
+            <input type="search" className="search" placeholder="Search for movies.." />
             <div className="chooseGenre">
                 <button className="genres">action</button>
                 <button className="genres">comedy</button>
