@@ -12,7 +12,6 @@ const connectMongoose = async () => {
         console.log('Connect with mongooseDB')
     } catch (error) {
         console.error(error);
-        console.log("Error")
     }
 }
 

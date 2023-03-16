@@ -122,4 +122,34 @@ table {
 
 td {
     cursor: pointer;
-}
+  }
+
+  .SearchResults{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    padding:5vw;
+    margin: 0;
+    list-style: none;
+
+  }
+  .movieCard{
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin-top: 10px;
+    line-height: 150px;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    border: 10px;
+    border-color: black;
+    background-color: darkgrey;
+  }
+  .h3{
+    font-size: 0.1rem;
+  }
+  .h4{
+    font-size: 0.2em;
+  }

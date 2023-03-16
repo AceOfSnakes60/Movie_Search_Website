@@ -1,6 +1,6 @@
 
 import {useState, useEffect} from 'react'
-import {getMoviesFromApi, getMoviesByType} from './library/getMovies'
+import {getMoviesFromApi, getMoviesByType, getMoviesBySearch} from './library/getMovies'
 import React from 'react';
 import star from '../images/star.png'
 import starColor from '../images/starColor.png'
@@ -10,6 +10,9 @@ function Main() {
     const [discoverMovies, setDiscoverMovies] = useState()
     const [upcomingMovies, setUpcomingMovies]= useState();
     const [highestRated, setHighestRated]= useState();
+    const [searchQuery, setSearchQuery]= useState('');
+    const [foundMovies, setFoundMovies]= useState();
+    const [showSearch, setShowSearch] = useState(false);
 
     useEffect(()=>{
         getMoviesFromApi().then(movies=>setDiscoverMovies(movies))
@@ -17,10 +20,29 @@ function Main() {
         getMoviesByType("topRated").then(movies=>setHighestRated(movies))
     },[]);
 
-
+    function findMovies(){
+        if(searchQuery.length>0){
+        getMoviesBySearch(searchQuery)
+        .then(movies=>{
+            setFoundMovies(movies);
+            console.log(movies);
+            });
+            setShowSearch(true);
+        }
+    }
     return(
+        <div>
+            <div className='search-bar'>
+                <input type="search" className="search" placeholder="Search for movies.." onChange={e=>setSearchQuery(e.target.value)} />
+                <button onClick={findMovies}>search</button>
+                {console.log(showSearch)}
+            </div>
+            {(showSearch === true)?
+            <div>
+        <SearchResults movies={foundMovies}/>
+        </div>:
         <div className="main">
-            <input type="search" className="search" placeholder="Search for movies.." />
+
             <div className="chooseGenre">
                 <button className="genres">action</button>
                 <button className="genres">comedy</button>
@@ -46,7 +68,9 @@ function Main() {
                 <div>{highestRated!==undefined&&<ShowHighestRated movie={highestRated.results}/>}</div>
             </div>
         </div>
-
+        }
+        </div>
+        
     )
 }
 
@@ -72,13 +96,27 @@ function ShowUpcomingMovies(props){
 }
 
 function ShowHighestRated(props){
-    console.log(props);
     return(                 
     <div>
         <h1>{props.movie[0].title}</h1>
         <h2>{props.movie[0].release_date}</h2>
         <h2>{props.movie[0].vote_average}</h2>
     </div>
+    )
+}
+
+function SearchResults(props){
+
+    return(
+        <div className='SearchResults'>
+            {props.movies!==undefined&&props.movies.results
+            .map(movie=>{return(
+                <div className='movieCard'>
+                    <h3>{movie.title}</h3>
+                    <h4>{(movie.release_date).split('-')[0]}</h4>
+                </div>
+            )})}
+        </div>
     )
 }
 

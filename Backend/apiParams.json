@@ -29,7 +29,7 @@
     }
 },
 "find" : {
-    "PATH":"search/multi",
+    "PATH":"search/movie",
     "PARAMS":{
         "language": "en-US",
         "query": "kill",
