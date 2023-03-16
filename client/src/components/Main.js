@@ -2,6 +2,8 @@
 import {useState, useEffect} from 'react'
 import {getMoviesFromApi, getMoviesByType} from './library/getMovies'
 import React from 'react';
+import star from '../images/star.png'
+import starColor from '../images/starColor.png'
 
 
 function Main() {
@@ -10,8 +12,8 @@ function Main() {
     const [highestRated, setHighestRated]= useState();
 
     useEffect(()=>{
-        //getMoviesFromApi().then(movies=>setDiscoverMovies(movies))
-        //getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies))
+        getMoviesFromApi().then(movies=>setDiscoverMovies(movies))
+        getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies))
         getMoviesByType("topRated").then(movies=>setHighestRated(movies))
     },[]);
 
@@ -27,15 +29,17 @@ function Main() {
             </div>
             <div className="upcoming">
                 <h1>Upcoming Movies</h1>
-                <div className="upcomingMovie">Avatar</div>
-                <div className="upcomingMovie">Avatar</div>
+                <div className="upcomingMovie">{upcomingMovies!==undefined&&<ShowUpcomingMovies movie={upcomingMovies.results}/>}
+                </div>
+                <div className="upcomingMovie">Avatar
+                </div>
                 <div className="upcomingMovie">Avatar</div>
             </div>
             <div className="randomMovie">
-                <div className="randomMovieBlock">TLOU</div>
-                <div className="randomMovieBlock">AVENGERS</div>
-                <div className="randomMovieBlock">kjefb</div>
-                <div className="randomMovieBlock">rbr</div>
+                <div className="randomMovieBlock">{discoverMovies!==undefined&&<ShowDiscoverMovies movie={discoverMovies.results}/>}</div>
+                <div className="randomMovieBlock">{discoverMovies!==undefined&&<ShowDiscoverMovies movie={discoverMovies.results}/>}</div>
+                <div className="randomMovieBlock">{discoverMovies!==undefined&&<ShowDiscoverMovies movie={discoverMovies.results}/>}</div>
+                <div className="randomMovieBlock">{discoverMovies!==undefined&&<ShowDiscoverMovies movie={discoverMovies.results}/>}</div>
             </div>
             <div className="highestRated">
                 TOP 5 MOVIES
@@ -43,6 +47,27 @@ function Main() {
             </div>
         </div>
 
+    )
+}
+
+function ShowDiscoverMovies(props){
+    console.log(props);
+    let random = Math.floor(Math.random() * 15)
+    return(                 
+    <div>
+        <h1 className='randomMovieText'>{props.movie[random].title}</h1>
+    </div>
+    )
+}
+
+function ShowUpcomingMovies(props){
+    console.log(props);
+    let random = Math.floor(Math.random() * 19)
+    return(                 
+    <div>
+        <h1 className='randomMovieText'>{props.movie[random].title}</h1>
+        <h1 className='randomMovieText'>{props.movie[random].release_date}</h1>
+    </div>
     )
 }
 
