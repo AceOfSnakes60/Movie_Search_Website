@@ -2,6 +2,7 @@ import React from 'react';
 
 function Main() {
 
+    
     let content =
         <div className="main">
             <input type="search" className="search" placeholder="Search for movies.." />
@@ -31,14 +32,23 @@ function Main() {
                         <th>Year</th>
                         <th>Rating</th>
                     </tr>
-                    {/* <ShowHighestRated movie={highestRated[0]}/>
-                    <ShowHighestRated movie={highestRated[1]}/> */}
+                    <tr>
+                        <td>Avatar</td>
+                        <td>2009</td>
+                        <td>8.2</td>
+                    </tr>
+                    <tr>
+                        <td>TLOU</td>
+                        <td>2023</td>
+                        <td>8.0</td>
+                    </tr>
                 </table>
             </div>
-            {/* <div>{highestRated}</div> */}
         </div>
 
-    )
+    return content;
+
+
 }
 
 export default Main;
