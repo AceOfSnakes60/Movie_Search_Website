@@ -1,16 +1,14 @@
-.app{
-    width: 100%;
-    height: 100%;
-}
+
 .main{
-    background-color: #8b8e8f;
+    background-image: url('../images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; 
     border: none;
-    height: 100%;
-    width: 100%;
     font-size: 1vw;
     text-align: center;
-    margin-left: 10px;
-    margin-top: 150px;
+    padding-bottom: 32px;
+    padding-left: 10px;
+    padding-top: 20px;
 }
 
 .search{
@@ -70,7 +68,7 @@
     font-size: 1vw;
     text-align: center;
     margin-left: 600px;
-    margin-top: -500px;
+    margin-top: -545px;
 }
 
 .randomMovieBlock{
@@ -82,11 +80,12 @@
     margin-left: 10px;
     margin-top: 40px;
     display: inline-block;
+    margin-bottom: 40px;
 }
 
 .highestRated{
     background-color: rgb(67, 69, 70);
-    width: 700px;
+    width: 50%;
     height: 200px;
     font-size: 1.5vw;
     text-align: center;
