@@ -2,14 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import User from '../models/userModel.js';
+import dbURL from '../mongooDB_URL.js';
 
 const router = express.Router();
 
-const dbURI = 'mongodb+srv://jakubszczygiel29:jakub29@szczygiel29.hhs5sg2.mongodb.net/test';
 const connectMongoose = async () => {
     try {
-        await mongoose.connect(dbURI)
-
+        await mongoose.connect(dbURL)
         console.log('Connect with mongooseDB')
     } catch (error) {
         console.error(err);
