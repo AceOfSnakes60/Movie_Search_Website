@@ -1,11 +1,16 @@
+.register-body{
+  background-color:azure;
+  min-height: 100vh;
+}
+
 .register {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    padding: 2rem;
   }
   
-  .register svg {
+  .register- svg {
     margin-bottom: 1rem;
   }
   
@@ -20,15 +25,15 @@
     margin-bottom: 2rem;
   }
   
-  .form {
+  .form-register {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2rem;
   }
   
-  .form input {
-    width: 100%;
+  .form-register input {
+    width: 130%;
     padding: 1rem;
     margin-bottom: 1rem;
     border: none;
@@ -36,11 +41,11 @@
     font-size: 1rem;
   }
   
-  .form input::placeholder {
+  .form-register input::placeholder {
     color: #ccc;
   }
   
-  .form button {
+  .form-register button {
     padding: 1rem 2rem;
     border: none;
     border-radius: 5px;
@@ -50,6 +55,6 @@
     cursor: pointer;
   }
   
-  .form button:hover {
-    background-color: #0062cc;
+  .form-register button:hover {
+    background-color: #0e7df4;
   }

@@ -32,7 +32,7 @@ function Footer() {
             </div>
             <div className='social-media'>
                 <div className='subscribe'>
-                    <h5>Get the freshest Sausage news</h5>
+                    <h5>Get the freshest movies news</h5>
                     <input type="text" value={email} onChange={handleInputChange} placeholder="  Your email here" />
                     <button onClick={handleSubscribe}>Subscribe</button>
                 </div>
