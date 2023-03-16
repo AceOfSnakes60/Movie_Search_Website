@@ -42,13 +42,14 @@ app.get('/api/movies/:id', (req, res)=>{
     .then((data)=>res.send(data));
 })
 
-app.get('/api/movies/:id', (req, res)=>{
-    const endpoint = getApiEndpoint(apiParams[req.params.id]);
+app.get('/api/movies/find/:id', (req, res)=>{
+    const params = apiParams["find"];
+    params.PARAMS.query = req.params.id;
+    const endpoint = getApiEndpoint(params);
     fetch(endpoint)
     .then(response=>response.json())
     .then((data)=>res.send(data));
 })
-
 
 app.use('/api/users', router)
 
