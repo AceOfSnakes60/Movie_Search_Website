@@ -17,7 +17,17 @@
         "page": 1
     }
 },
-
+"trending":{
+    "PATH": "trending/movie/day",
+    "PARAMS":{}
+},
+"upcoming":{
+    "PATH":"movie/upcoming",
+    "PARAMS":{
+        "language": "en-US",
+        "page": 1
+    }
+},
 "find" : {
     "PATH":"search/multi",
     "PARAMS":{

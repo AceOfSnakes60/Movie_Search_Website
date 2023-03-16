@@ -28,7 +28,14 @@ app.get('/', (req,res) => {
 })
 
 app.get('/api/movies', (req, res)=>{
-    const endpoint = getApiEndpoint(apiParams.find);
+    const endpoint = getApiEndpoint(apiParams.discover);
+    fetch(endpoint)
+    .then(response=>response.json())
+    .then((data)=>res.send(data));
+})
+
+app.get('/api/movies/:id', (req, res)=>{
+    const endpoint = getApiEndpoint(apiParams[req.params.id]);
     fetch(endpoint)
     .then(response=>response.json())
     .then((data)=>res.send(data));

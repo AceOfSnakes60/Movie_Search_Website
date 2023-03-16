@@ -1,9 +1,22 @@
+
+import {useState, useEffect} from 'react'
+import {getMoviesFromApi, getMoviesByType} from './library/getMovies'
 import React from 'react';
 
-function Main() {
 
-    
-    let content =
+function Main() {
+    const [discoverMovies, setDiscoverMovies] = useState()
+    const [upcomingMovies, setUpcomingMovies]= useState();
+    const [highestRated, setHighestRated]= useState();
+
+    useEffect(()=>{
+        //getMoviesFromApi().then(movies=>setDiscoverMovies(movies))
+        //getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies))
+        getMoviesByType("topRated").then(movies=>setHighestRated(movies))
+    },[]);
+
+
+    return(
         <div className="main">
             <input type="search" className="search" placeholder="Search for movies.." />
             <div className="chooseGenre">
@@ -26,29 +39,22 @@ function Main() {
             </div>
             <div className="highestRated">
                 TOP 5 MOVIES
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Year</th>
-                        <th>Rating</th>
-                    </tr>
-                    <tr>
-                        <td>Avatar</td>
-                        <td>2009</td>
-                        <td>8.2</td>
-                    </tr>
-                    <tr>
-                        <td>TLOU</td>
-                        <td>2023</td>
-                        <td>8.0</td>
-                    </tr>
-                </table>
+                <div>{highestRated!==undefined&&<ShowHighestRated movie={highestRated.results}/>}</div>
             </div>
         </div>
 
-    return content;
+    )
+}
 
-
+function ShowHighestRated(props){
+    console.log(props);
+    return(                 
+    <div>
+        <h1>{props.movie[0].title}</h1>
+        <h2>{props.movie[0].release_date}</h2>
+        <h2>{props.movie[0].vote_average}</h2>
+    </div>
+    )
 }
 
 export default Main;
