@@ -1,14 +1,33 @@
 import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button'
+import { useNavigate } from "react-router-dom";
+
 import './Register.css'
 
 
 function Register() {
     const [user, setUser] = useState({})
-
+    const [doNotMatch, setDoNotMatch] = useState('')
     const { name, email, password, password2 } = user
+    const navigate = useNavigate()
 
+    function checkPostData() {
+        const emailChar = ['@', '.']
+
+        if (password !== password2) {
+            setDoNotMatch('Password do not match, please try again');
+        } else if (password.length < 7) {
+            setDoNotMatch('Password is to short, please try again')
+        } else if (!password.match(/[0-9]/)) {
+            setDoNotMatch('Password should includes at least one number, please try again')
+        }else if (!emailChar.every(element => email.includes(element))) {
+            setDoNotMatch('Your emial is incorrect, please try again')
+        } else {
+            setDoNotMatch('Thank you for your registration')
+            setUser(user)    
+        }
+    }
 
     const submitUser = async (e) => {
         e.preventDefault();
@@ -44,6 +63,8 @@ function Register() {
                 <h1>Register</h1>
                 <p>Please create an account</p>
             </section>
+            <h3>{doNotMatch}</h3>
+            <hr style={{width: "80%"}}/>
             <section className='form-register'>
                 <form onSubmit={submitUser} className='form-register'>
                     <input
@@ -63,6 +84,7 @@ function Register() {
                         onChange={(e) => setUser({ ...user, email: e.target.value })}
                     />
                     <input
+                        type='password'
                         text="text"
                         placeholder='Enter password'
                         id="password"
@@ -71,6 +93,7 @@ function Register() {
                         onChange={(e) => setUser({ ...user, password: e.target.value })}
                     />
                     <input
+                        type='password'
                         text="text"
                         placeholder='Confirm password'
                         id="password2"
