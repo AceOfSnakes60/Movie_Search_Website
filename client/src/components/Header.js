@@ -12,7 +12,7 @@ import {
 import Main from './Main'
 import About from './About'
 import Login from './Login'
-import Register from './Register'
+import Register from './register/Register'
 
 function Header() {
 

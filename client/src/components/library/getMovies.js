@@ -1,28 +1,17 @@
 async function getMoviesFromApi() {
-    const movies = await fetch("http://localhost:8000/api/movies/")
-        .then(async response=> await response.json())
-        .then(data=>{
-            return data;
-        })
+    const response = await fetch("http://localhost:8000/api/movies/")
+    const movies = await response.json();
     return movies;
 }
 
 async function getMoviesByType(type){
-    const movies = await fetch(`http://localhost:8000/api/movies/${type}`)
-    .then(async response=>await response.json())
-    .then(data=>{
-        return data;
-    })
-return movies;
+    const response = await fetch(`http://localhost:8000/api/movies/${type}`)
+return await response.json();
 }
 
 async function getMoviesBySearch(query){
     query = query.replace(" ", "%20");
-    const movies = await fetch(`http://localhost:8000/api/movies/find/${query}`)
-    .then(async response=>await response.json())
-    .then(data=>{
-        return data;
-    })
-return movies;
+    const response = await fetch(`http://localhost:8000/api/movies/find/${query}`)
+return await response.json();
 }
 export {getMoviesFromApi, getMoviesByType, getMoviesBySearch};

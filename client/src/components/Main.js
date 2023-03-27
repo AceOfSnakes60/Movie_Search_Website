@@ -15,9 +15,9 @@ function Main() {
     const [showSearch, setShowSearch] = useState(false);
 
     useEffect(()=>{
-        getMoviesFromApi().then(movies=>setDiscoverMovies(movies))
-        getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies))
-        getMoviesByType("topRated").then(movies=>setHighestRated(movies))
+        getMoviesFromApi().then(movies=>setDiscoverMovies(movies)).catch(err=>console.error(err))
+        getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies)).catch(err=>console.error(err))
+        getMoviesByType("topRated").then(movies=>setHighestRated(movies)).catch(err=>console.error(err))
     },[]);
 
     function findMovies(){
@@ -76,7 +76,7 @@ function Main() {
 
 function ShowDiscoverMovies(props){
     console.log(props);
-    let random = Math.floor(Math.random() * 15)
+    const random = Math.floor(Math.random() * 15)
     return(                 
     <div>
         <h1 className='randomMovieText'>{props.movie[random].title}</h1>

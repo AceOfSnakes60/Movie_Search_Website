@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState} from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button'
 import './Register.css'
 
@@ -13,23 +13,24 @@ function Register() {
     const submitUser = async (e) => {
         e.preventDefault();
         if (password !== password2) {
-            alert('Password do not match')
-        } else {
-            console.log(user)
-            const response = await fetch(`http://localhost:8000/api/users`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(user)
-            });
-
-            if (response.ok) {
-                console.log('Register user')
-            } else {
-                console.log('Failed register')
-            }
+            return alert('Password do not match');
         }
+        console.log(user)
+        const response = await fetch(`http://localhost:8000/api/users/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user)
+        });
+
+        if (!response.ok) {
+            console.log('Failed register')
+            const data = await response.json();
+            return alert(data.message);
+        }
+        console.log("Registered user");
+
     }
 
 
