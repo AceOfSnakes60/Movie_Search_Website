@@ -2,8 +2,8 @@
 import {useState, useEffect} from 'react'
 import {getMoviesFromApi, getMoviesByType, getMoviesBySearch} from './library/getMovies'
 import React from 'react';
-import star from '../images/star.png'
-import starColor from '../images/starColor.png'
+// import star from '../images/star.png'
+// import starColor from '../images/starColor.png'
 
 
 function Main() {
@@ -25,7 +25,6 @@ function Main() {
         getMoviesBySearch(searchQuery)
         .then(movies=>{
             setFoundMovies(movies);
-            console.log(movies);
             });
             setShowSearch(true);
         }
@@ -35,7 +34,7 @@ function Main() {
             <div className='search-bar'>
                 <input type="search" className="search" placeholder="Search for movies.." onChange={e=>setSearchQuery(e.target.value)} />
                 <button onClick={findMovies}>search</button>
-                {console.log(showSearch)}
+        
             </div>
             {(showSearch === true)?
             <div>
@@ -75,7 +74,7 @@ function Main() {
 }
 
 function ShowDiscoverMovies(props){
-    console.log(props);
+    
     let random = Math.floor(Math.random() * 15)
     return(                 
     <div>
@@ -85,7 +84,7 @@ function ShowDiscoverMovies(props){
 }
 
 function ShowUpcomingMovies(props){
-    console.log(props);
+    
     let random = Math.floor(Math.random() * 19)
     return(                 
     <div>

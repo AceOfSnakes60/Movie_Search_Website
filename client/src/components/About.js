@@ -1,14 +1,24 @@
 import React from 'react';
 import './About.css'
-
+import { useState } from 'react';
 
 function About() {
+    const [email, setEmail] = useState("");
+    const handleSubscribe = () => {
+        console.log(email);
+        alert("You have successfully subscribed to our newsletter")
+      };
+    
+      const handleInputChange = (e) => {
+        setEmail(e.target.value);
+      };
+  
 
     return (
         <div className='About'>
             <div className='about-text'>
                 <h1>WHO WE ARE </h1>
-                <hr/>
+                <hr />
                 <p>
                     Once upon a time, there was a group of film enthusiasts who loved to watch movies and
                     discuss them with their friends. However, they found it difficult to keep track of all
@@ -42,6 +52,17 @@ function About() {
                     its recommendations and reviews. The site has also expanded its coverage to include TV shows, documentaries,
                     and other forms of visual entertainment.
                 </p>
+                <div className='contact'>
+                    <h5>Contact</h5>
+                    <p><a href="mailto:info@adoptTheSausage.com">info@MovieParadise.com</a></p>
+                    <p>tel: +48 600 600 600</p>
+                    <p>plac Mariacki 5, 31-042 Kraków</p>
+                </div>
+                <div className='subscribe'>
+                    <h5>Get the freshest movies news</h5>
+                    <input type="text" value={email} onChange={handleInputChange} placeholder="  Your email here" />
+                    <button onClick={handleSubscribe}>Subscribe</button>
+                </div>
             </div>
         </div>
     )

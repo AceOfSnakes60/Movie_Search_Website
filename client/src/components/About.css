@@ -19,11 +19,11 @@
     border-radius: 2rem;
 }
 
-.About{
+/* .About{
     background-image: url('../images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
-    height: 80%;
+    height: 80%; */
 .about-text p {
     margin: 20px 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

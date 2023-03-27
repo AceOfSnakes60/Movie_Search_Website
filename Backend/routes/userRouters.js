@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import User from '../models/userModel.js';
 import dbURL from '../mongooDB_URL.js';
 
+
 const router = express.Router();
 
 const connectMongoose = async () => {
@@ -21,9 +22,7 @@ connectMongoose()
 //registration
 router.post('/', async (req, res) => {
     try{
-        const name = req.body.name;
-        const email = req.body.email;
-        const password = req.body.password;
+        const {name, email, password, favorites, comments} = req.body
 
         if(!name || !email || !password) {
             res.status(400)
@@ -43,7 +42,9 @@ router.post('/', async (req, res) => {
         const user = await User.create({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            favorites,
+            comments,
         })
 
         if(user) {
@@ -63,9 +64,8 @@ router.post('/', async (req, res) => {
 //login
 router.post('/login', async (req, res) => {
     try{
-        const email = req.body.email;
-        const password = req.body.password;
-
+        const {email, password} =req.body
+        
         const user = await User.findOne({email});
         const comperePassword = await bcrypt.compare(password, user.password)
 
