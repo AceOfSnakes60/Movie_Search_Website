@@ -105,12 +105,12 @@ function ShowHighestRated(props){
 }
 
 function SearchResults(props){
-
+    console.log(props.movies);
     return(
         <div className='SearchResults'>
             {props.movies!==undefined&&props.movies.results
             .map(movie=>{return(
-                <div className='movieCard'>
+                <div className='movieCard' id={movie.id}>
                     <h3>{movie.title}</h3>
                     <h4>{(movie.release_date).split('-')[0]}</h4>
                 </div>
