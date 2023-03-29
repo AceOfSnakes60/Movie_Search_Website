@@ -99,6 +99,13 @@ app.get('/api/people/findPerson/:id', (req, res)=>{
     .then((data)=>res.send(data));
 })
 
+app.get('/api/movies/reviews/:id', (req, res)=>{
+    const endpoint = `https://api.themoviedb.org/3/movie/${req.params.id}/reviews?api_key=${API_KEY}&language=en-US`
+    fetch(endpoint)
+.then(response=>response.json())
+.then((data)=>res.send(data));
+})
+
 app.use('/api/users', router)
 
 app.listen(port, () => {console.log(`http://localhost:${port}`)});
