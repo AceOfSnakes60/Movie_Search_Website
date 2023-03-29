@@ -42,10 +42,10 @@ function Register() {
 
         if (response.ok) {
             console.log('Register user')
+            navigate('/login')
         } else {
             console.log('Failed register')
         }
-        navigate('/login')
     }
 
 

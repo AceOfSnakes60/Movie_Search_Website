@@ -35,7 +35,6 @@ function MyAccount() {
 
     function handelSubmit(e) {
         e.preventDefault()
-        console.log(user)
         fetch(`http://localhost:8000/api/users/${user._id}`, {
             method: "PUT",
             headers: {
