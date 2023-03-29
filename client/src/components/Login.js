@@ -1,30 +1,29 @@
 import React from 'react';
 import { useState} from 'react';
 import Button from 'react-bootstrap/Button'
+import {useNavigate} from "react-router-dom";
 import './Login.css'
 
 function Login() {
-    const [fomrData, setFormData] = useState({})
+    const [formData, setFormData] = useState({})
+    const [userStatus, setUserStatus] = useState('')
 
-    const {email, password} = fomrData
+    const {email, password} = formData
+    const navigator = useNavigate()
 
     async function loginUser(e) {
         e.preventDefault();
-        console.log(fomrData)
         const response = await fetch('http://localhost:8000/api/users/login', {
             method:'POST',
             headers:{
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(fomrData)
+            body: JSON.stringify(formData)
         });
 
-        if(response.ok) {
-            console.log('User connect')
-        } else {
-            console.log('Failed')
-        }
-
+        localStorage.setItem('userInfo', JSON.stringify(formData))
+        
+        return response.ok ? navigator('/') : setUserStatus('User was not found')
     }
 
     return (
@@ -40,23 +39,25 @@ function Login() {
                     </svg>
                 </p>
             </section>
+            <h3>{userStatus}</h3>
+            <hr style={{width: "80%"}}/>
             <section className='form-login'>
                 <form onSubmit={loginUser}>
                     <input
-                        text="text"
+                        type="text"
                         placeholder='Enter your email'
                         id="email"
                         name='email'
                         value={email}
-                        onChange={(e) => setFormData({...fomrData, email: e.target.value})}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
                     <input
-                        text="password"
+                        type='password'
                         placeholder='Enter password'
                         id="password"
                         name='password'
                         value={password}
-                        onChange={(e) => setFormData({...fomrData, password: e.target.value})}
+                        onChange={(e) => setFormData({...formData, password: e.target.value})}
                     />
                     <Button type='submit' variant="primary" size="lg" active>Login</Button>
                 </form>

@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react'
 import { getMoviesFromApi, getMoviesByType, getMoviesBySearch, getPeopleBySearch } from './library/getMovies'
 import React from 'react';
-import star from '../images/star.png'
-import starColor from '../images/starColor.png'
+// import star from '../images/star.png'
+// import starColor from '../images/starColor.png'
 
 
 function Main() {
@@ -14,12 +14,6 @@ function Main() {
     const [foundMovies, setFoundMovies] = useState();
     const [foundPeople, setFoundPeople] = useState();
     const [showSearch, setShowSearch] = useState(false);
-
-    useEffect(() => {
-        getMoviesFromApi().then(movies => setDiscoverMovies(movies))
-        getMoviesByType("upcoming").then(movies => setUpcomingMovies(movies))
-        getMoviesByType("topRated").then(movies => setHighestRated(movies))
-    }, []);
 
     function findMovies() {
         if (searchQuery.length > 0) {
@@ -39,9 +33,16 @@ function Main() {
                     setFoundPeople(people);
                     console.log(people);
                 });
-            setShowSearch(true);
+                  setShowSearch(true);
         }
     }
+
+    useEffect(()=>{
+        getMoviesFromApi().then(movies=>setDiscoverMovies(movies)).catch(err=>console.error(err))
+        getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies)).catch(err=>console.error(err))
+        getMoviesByType("topRated").then(movies=>setHighestRated(movies)).catch(err=>console.error(err))
+    },[]);
+
 
     const handleSelectChange = (event) => {
         if (event.target.value === 'movies') {
@@ -53,6 +54,7 @@ function Main() {
     return (
         <div>
             <div className='search-bar'>
+
                 <select onChange={handleSelectChange}>
                     <option disabled selected>What do you want to search</option>
                     <option>movies</option>
@@ -80,6 +82,9 @@ function Main() {
                         <button onClick={findPeople}>search</button>
                     </div>
                 ) : null}
+                <input type="search" className="search" placeholder="Search for movies.." onChange={e=>setSearchQuery(e.target.value)} />
+                <button onClick={findMovies}>search</button>
+        
             </div>
             <div>
                 <SearchResults movies={foundMovies} />
@@ -118,8 +123,7 @@ function Main() {
     )
 }
 
-function ShowDiscoverMovies(props) {
-    console.log(props);
+function ShowDiscoverMovies(props){
     let random = Math.floor(Math.random() * 15)
     return (
         <div>
@@ -128,8 +132,7 @@ function ShowDiscoverMovies(props) {
     )
 }
 
-function ShowUpcomingMovies(props) {
-    console.log(props);
+function ShowUpcomingMovies(props)
     let random = Math.floor(Math.random() * 19)
     return (
         <div>
