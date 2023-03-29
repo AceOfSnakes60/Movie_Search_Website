@@ -18,9 +18,6 @@ const connectMongoose = async () => {
 }
 
 
-const router = express.Router();
-
-
 //registration
 router.post('/', async (req, res) => {
     try{

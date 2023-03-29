@@ -33,8 +33,6 @@ async function getMovieReviews(id){
     return await response.json();
 }
 
-export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getMoviePictures, getMovieDetails, getMovieReviews};
-
 async function getPeopleBySearch(query){
     query = query.replace(" ", "%20");
     const people = await fetch(`http://localhost:8000/api/people/findPerson/${query}`)
@@ -44,4 +42,5 @@ async function getPeopleBySearch(query){
     })
 return people;
 }
-export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getPeopleBySearch};
+
+export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getMoviePictures,getPeopleBySearch, getMovieDetails, getMovieReviews};

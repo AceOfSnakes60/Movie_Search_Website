@@ -79,12 +79,9 @@ function Main() {
                         <button onClick={findPeople}>search</button>
                     </div>
                 ) : null}
-                <input type="search" className="search" placeholder="Search for movies.." onChange={e=>setSearchQuery(e.target.value)} />
-                <button onClick={findMovies}>search</button>
         
             </div>
             <div>
-                <SearchResults movies={foundMovies} />
                 <SearchPeopleResults people={foundPeople} />
 
             </div> 
@@ -104,10 +101,10 @@ function Main() {
                     return(<div className="upcomingMovie" onClick={()=>handleClick(movie.id)} ><ShowUpcomingMovies movie={movie}/></div>)}) }  
                 </div>
                 <div className="randomMovie">
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={0} />}</div>
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={1} />}</div>
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={2} />}</div>
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={3} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results[0]} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results[1]} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results[2]} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results[3]} />}</div>
                 </div>
                 <div className="highestRated">
                     TOP 5 MOVIES
@@ -122,7 +119,13 @@ function Main() {
     )
 }
 
-
+function ShowDiscoverMovies(props){
+    return (
+        <div>
+            <h1 className='randomMovieText'>{props.movie.title}</h1>
+        </div>
+    )
+}
 function ShowUpcomingMovies(props) {
 
     return (
@@ -140,7 +143,8 @@ function ShowHighestRated(props) {
             <h1>{props.movie[props.index].title}</h1>
             <h2>{props.movie[props.index].release_date}</h2>
             <h2>{props.movie[props.index].vote_average}</h2>
-
+        </div>)
+}
 
 function SearchPeopleResults(props) {
 
