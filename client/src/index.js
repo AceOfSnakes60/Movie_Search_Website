@@ -7,10 +7,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from './components/Main'
 import About from './components/About'
 import Login from './components/Login'
-import Register from './components/Register'
+import Register from './components/register/Register'
 import ErrorPage from './components/ErrorPage';
+
+import {SearchResults} from './components/Search'
+import {FrontPage} from './components/Main'
+import {Details} from './components/Details'
+
 import MyAccount from './components/MyAccount';
 import AIMovieFinder from './components/AIMovieFinder';
+
 
 
 const router = createBrowserRouter([
@@ -21,7 +27,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Main />,
+        element: <Main/>,
+      },
+      {
+        path: "/search/:query",
+        element: <SearchResults/>
+      },
+      {
+        path: "/movie/:id",
+        element: <Details/>
       },
       {
         path: "/about",

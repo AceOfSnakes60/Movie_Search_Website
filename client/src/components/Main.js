@@ -1,30 +1,33 @@
 
-import { useState, useEffect } from 'react'
 import { getMoviesFromApi, getMoviesByType, getMoviesBySearch, getPeopleBySearch } from './library/getMovies'
-import React from 'react';
-// import star from '../images/star.png'
-// import starColor from '../images/starColor.png'
 
+import React from 'react';
+import { useState, useEffect } from 'react'
+
+import { SearchBar } from './Search'
+import { useNavigate } from 'react-router';
+import './Main.css'
 
 function Main() {
+
     const [discoverMovies, setDiscoverMovies] = useState()
     const [upcomingMovies, setUpcomingMovies] = useState();
     const [highestRated, setHighestRated] = useState();
     const [searchQuery, setSearchQuery] = useState('');
-    const [foundMovies, setFoundMovies] = useState();
     const [foundPeople, setFoundPeople] = useState();
     const [showSearch, setShowSearch] = useState(false);
 
-    function findMovies() {
-        if (searchQuery.length > 0) {
-            getMoviesBySearch(searchQuery)
-                .then(movies => {
-                    setFoundMovies(movies);
-                    console.log(movies);
-                });
-            setShowSearch(true);
+
+    useEffect(() => {
+        getMoviesFromApi().then(movies => setDiscoverMovies(movies)).catch(err => console.error(err))
+        getMoviesByType("upcoming").then(movies => setUpcomingMovies(movies)).catch(err => console.error(err))
+        getMoviesByType("topRated").then(movies => setHighestRated(movies)).catch(err => console.error(err))
+    }, []);
+    const navigate = useNavigate();
+        const handleClick=(id)=>{
+
+            navigate(`/movie/${id}`, {replace:true})
         }
-    }
 
     function findPeople() {
         if (searchQuery.length > 0) {
@@ -61,14 +64,8 @@ function Main() {
                     <option>actors</option>
                 </select>
                 {showSearch === 'movies' ? (
-                    <div>
-                        <input
-                            type='searchMovie'
-                            className='search'
-                            placeholder='Search for movies..'
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                        <button onClick={findMovies}>search</button>
+                    <div className='Search'>
+                        <SearchBar />
                     </div>
 
                 ) : showSearch === 'actors' ? (
@@ -91,6 +88,7 @@ function Main() {
                 <SearchPeopleResults people={foundPeople} />
 
             </div> 
+
             <div className="main">
 
                 <div className="chooseGenre">
@@ -101,73 +99,48 @@ function Main() {
                 </div>
                 <div className="upcoming">
                     <h1>Upcoming Movies</h1>
-                    <div className="upcomingMovie">{upcomingMovies !== undefined && <ShowUpcomingMovies movie={upcomingMovies.results} />}
-                    </div>
-                    <div className="upcomingMovie">Avatar
-                    </div>
-                    <div className="upcomingMovie">Avatar</div>
+
+                    {upcomingMovies !== undefined && ((upcomingMovies.results).slice(0, 3)).map((movie)=>{
+                    return(<div className="upcomingMovie" onClick={()=>handleClick(movie.id)} ><ShowUpcomingMovies movie={movie}/></div>)}) }  
                 </div>
                 <div className="randomMovie">
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} />}</div>
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} />}</div>
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} />}</div>
-                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={0} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={1} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={2} />}</div>
+                    <div className="randomMovieBlock">{discoverMovies !== undefined && <ShowDiscoverMovies movie={discoverMovies.results} index={3} />}</div>
                 </div>
                 <div className="highestRated">
                     TOP 5 MOVIES
-                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} />}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={0} />}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={1} />}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={2} />}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={3} />}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={4} />}</div>
                 </div>
             </div>
         </div>
-
     )
 }
 
-function ShowDiscoverMovies(props){
-    let random = Math.floor(Math.random() * 15)
+
+function ShowUpcomingMovies(props) {
+
     return (
         <div>
-            <h1 className='randomMovieText'>{props.movie[random].title}</h1>
+            <h1 className='randomMovieText'>{props.movie.title}</h1>
+            <h1 className='randomMovieText'>{props.movie.release_date}</h1>
         </div>
     )
 }
 
-function ShowUpcomingMovies(props)
-    let random = Math.floor(Math.random() * 19)
-    return (
-        <div>
-            <h1 className='randomMovieText'>{props.movie[random].title}</h1>
-            <h1 className='randomMovieText'>{props.movie[random].release_date}</h1>
-        </div>
-    )
-}
 
 function ShowHighestRated(props) {
     return (
         <div>
-            <h1>{props.movie[0].title}</h1>
-            <h2>{props.movie[0].release_date}</h2>
-            <h2>{props.movie[0].vote_average}</h2>
-        </div>
-    )
-}
+            <h1>{props.movie[props.index].title}</h1>
+            <h2>{props.movie[props.index].release_date}</h2>
+            <h2>{props.movie[props.index].vote_average}</h2>
 
-function SearchResults(props) {
-
-    return (
-        <div className='SearchResults'>
-            {props.movies !== undefined && props.movies.results
-                .map(movie => {
-                    return (
-                        <div className='movieCard'>
-                            <h3>{movie.title}</h3>
-                            <h4>{(movie.release_date).split('-')[0]}</h4>
-                        </div>
-                    )
-                })}
-        </div>
-    )
-}
 
 function SearchPeopleResults(props) {
 
@@ -182,9 +155,9 @@ function SearchPeopleResults(props) {
                         </div>
                     )
                 })}
+
         </div>
     )
 }
 
 export default Main;
-

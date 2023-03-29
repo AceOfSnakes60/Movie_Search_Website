@@ -31,6 +31,11 @@
 }
 
 
+.about-text p {
+    margin: 20px 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
 /* .about-cointainer .contactField form {
     background-color: azure;
     display: flex;
@@ -67,6 +72,7 @@
 
 .about-cointainer .contactField textarea:focus {
     border: 2px solid rgba(0, 206, 158, 1);
+
 }
 
 .about-cointainer .contactField label {
