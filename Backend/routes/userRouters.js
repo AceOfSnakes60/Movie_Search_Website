@@ -5,6 +5,8 @@ import User from '../models/userModel.js';
 
 // import dbURL from '../mongooDB_URL.js';
 
+const router = express.Router();
+
 
 const connectMongoose = async () => {
     try {
@@ -81,19 +83,39 @@ router.post('/login', async (req, res) => {
 })
 
 //users
-router.get('/me', async (req, res) => {
+router.get('/:email', async (req, res) => {
     try {
-        const id = req.body.id
-        const { _id, name, email, } = await User.findById(id);
+        const {email}= req.params
+        const findUser = await User.findOne({email});
 
-
-        res.status(200).json({
-            id: _id,
-            name: name,
-            email: email,
-        })
+        res.status(200).json({Data: findUser})
     } catch (err) {
         console.error(err)
+    }
+})
+
+//update user
+router.put('/:id', async (req, res) => {
+    try{
+        const {id} = req.params;
+        const newData = req.body
+        const findUser = await User.findByIdAndUpdate({_id: id}, {$set: newData}, {new: true})
+
+        res.status(200).json({message: 'Update sucessfull', Data: findUser})
+    }catch(err){
+        console.log(err)
+    }
+})
+
+//delete user
+router.delete('/:id', async (req, res) => {
+    try{
+        const {id} = req.params;
+        const deleteUser = await User.findByIdAndDelete(id);
+
+        res.status(200).json({message: "User deleted"})
+    }catch(err){
+        console.log(err)
     }
 })
 

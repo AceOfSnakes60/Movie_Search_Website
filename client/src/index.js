@@ -9,6 +9,8 @@ import About from './components/About'
 import Login from './components/Login'
 import Register from './components/Register'
 import ErrorPage from './components/ErrorPage';
+import MyAccount from './components/MyAccount';
+import AIMovieFinder from './components/AIMovieFinder';
 
 
 const router = createBrowserRouter([
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/myAccount",
+        element: <MyAccount />,
+      },
+      {
+        path: "/findMovieAI",
+        element: <AIMovieFinder />,
       }
     ]
   }
