@@ -1,6 +1,9 @@
+
+import { getMoviesFromApi, getMoviesByType, getMoviesBySearch, getPeopleBySearch } from './library/getMovies'
+
 import React from 'react';
 import { useState, useEffect } from 'react'
-import { getMoviesFromApi, getMoviesByType } from './library/getMovies'
+
 import { SearchBar } from './Search'
 import { useNavigate } from 'react-router';
 import './Main.css'
@@ -10,6 +13,10 @@ function Main() {
     const [discoverMovies, setDiscoverMovies] = useState()
     const [upcomingMovies, setUpcomingMovies] = useState();
     const [highestRated, setHighestRated] = useState();
+    const [searchQuery, setSearchQuery] = useState('');
+    const [foundPeople, setFoundPeople] = useState();
+    const [showSearch, setShowSearch] = useState(false);
+
 
     useEffect(() => {
         getMoviesFromApi().then(movies => setDiscoverMovies(movies)).catch(err => console.error(err))
@@ -21,11 +28,67 @@ function Main() {
 
             navigate(`/movie/${id}`, {replace:true})
         }
+
+    function findPeople() {
+        if (searchQuery.length > 0) {
+            getPeopleBySearch(searchQuery)
+                .then(people => {
+                    setFoundPeople(people);
+                    console.log(people);
+                });
+                  setShowSearch(true);
+        }
+    }
+
+    useEffect(()=>{
+        getMoviesFromApi().then(movies=>setDiscoverMovies(movies)).catch(err=>console.error(err))
+        getMoviesByType("upcoming").then(movies=>setUpcomingMovies(movies)).catch(err=>console.error(err))
+        getMoviesByType("topRated").then(movies=>setHighestRated(movies)).catch(err=>console.error(err))
+    },[]);
+
+
+    const handleSelectChange = (event) => {
+        if (event.target.value === 'movies') {
+            setShowSearch('movies');
+        } else if (event.target.value === 'actors') {
+            setShowSearch('actors');
+        }
+    };
     return (
-        <div className='Front'>
-            <div className='Search'>
-                <SearchBar />
+        <div>
+            <div className='search-bar'>
+
+                <select onChange={handleSelectChange}>
+                    <option disabled selected>What do you want to search</option>
+                    <option>movies</option>
+                    <option>actors</option>
+                </select>
+                {showSearch === 'movies' ? (
+                    <div className='Search'>
+                        <SearchBar />
+                    </div>
+
+                ) : showSearch === 'actors' ? (
+                    <div>
+                        <input
+                            type='searchPeople'
+                            className='search'
+                            placeholder='Search for people..'
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        <button onClick={findPeople}>search</button>
+                    </div>
+                ) : null}
+                <input type="search" className="search" placeholder="Search for movies.." onChange={e=>setSearchQuery(e.target.value)} />
+                <button onClick={findMovies}>search</button>
+        
             </div>
+            <div>
+                <SearchResults movies={foundMovies} />
+                <SearchPeopleResults people={foundPeople} />
+
+            </div> 
+
             <div className="main">
 
                 <div className="chooseGenre">
@@ -36,6 +99,7 @@ function Main() {
                 </div>
                 <div className="upcoming">
                     <h1>Upcoming Movies</h1>
+
                     {upcomingMovies !== undefined && ((upcomingMovies.results).slice(0, 3)).map((movie)=>{
                     return(<div className="upcomingMovie" onClick={()=>handleClick(movie.id)} ><ShowUpcomingMovies movie={movie}/></div>)}) }  
                 </div>
@@ -58,14 +122,6 @@ function Main() {
     )
 }
 
-function ShowDiscoverMovies(props) {
-
-    return (
-        <div>
-            <h1 className='randomMovieText'>{props.movie[props.index].title}</h1>
-        </div>
-    )
-}
 
 function ShowUpcomingMovies(props) {
 
@@ -77,12 +133,29 @@ function ShowUpcomingMovies(props) {
     )
 }
 
+
 function ShowHighestRated(props) {
     return (
         <div>
             <h1>{props.movie[props.index].title}</h1>
             <h2>{props.movie[props.index].release_date}</h2>
             <h2>{props.movie[props.index].vote_average}</h2>
+
+
+function SearchPeopleResults(props) {
+
+    return (
+        <div className='SearchResults'>
+            {props.people !== undefined && props.people.results
+                .map(person => {
+                    return (
+                        <div className='movieCard'>
+                            <h3>{(person.name)}</h3>
+                            <h4>{(person.popularity)}</h4>
+                        </div>
+                    )
+                })}
+
         </div>
     )
 }
