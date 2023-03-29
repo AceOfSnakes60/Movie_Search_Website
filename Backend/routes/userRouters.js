@@ -1,23 +1,24 @@
 import express from 'express';
-import mongoose from 'mongoose';
+
 import bcrypt from 'bcryptjs';
 import User from '../models/userModel.js';
-import dbURL from '../mongooDB_URL.js';
 
-
+// import dbURL from '../mongooDB_URL.js';
 
 const router = express.Router();
 
+
 const connectMongoose = async () => {
     try {
-        await mongoose.connect(dbURL)
+        await mongoose.connect("")
         console.log('Connect with mongooseDB')
     } catch (error) {
         console.error(error);
     }
 }
 
-connectMongoose()
+
+const router = express.Router();
 
 
 //registration
@@ -25,16 +26,14 @@ router.post('/', async (req, res) => {
     try{
         const {name, email, password, favorites, comments} = req.body
 
-        if(!name || !email || !password) {
-            res.status(400)
-            throw new Error ('add all Field')
+        if (!name || !email || !password) {
+            res.status(400).json({ message: 'Add all Fields' })
+            throw new Error('add all Field')
         }
 
-        const userExists = await User.findOne({email});
-
-        if(userExists){
-            res.status(400)
-            throw new Error('User alredy exists')
+        if (await User.findOne({ email })) {
+            res.status(409).json({ message: 'User already exists' });
+            throw new Error('User already exists')
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -48,37 +47,38 @@ router.post('/', async (req, res) => {
             comments,
         })
 
-        if(user) {
-            res.status(200).json({
+        if (user) {
+
+            return res.status(200).json({
                 email: user.email
             })
-        } else {
-            res.status(400)
-            throw new Error('Invalid user data')
         }
+        res.status(400)
+        throw new Error('Invalid user data')
 
-    }catch(err){
-        console.log(err)
+
+    } catch (err) {
+        console.error(err);
     }
 })
 
 //login
 router.post('/login', async (req, res) => {
-    try{
-        const {email, password} =req.body
-        
-        const user = await User.findOne({email});
-        const comperePassword = await bcrypt.compare(password, user.password)
+    try {
+        const { email, password } = req.body;
 
-        if(user && comperePassword) {
-            res.json({message: 'Password match'})
-        }else{
-            res.status(400)
-            throw new Error('User not found')
+        const user = await User.findOne({ email });
+        const comparePassword = await bcrypt.compare(password, user.password)
+
+        if (user && comparePassword) {
+            return res.json({ message: 'Password match' });
         }
+        res.status(400)
+        throw new Error('User not found')
 
-    }catch(err){
-        console.log(err)
+
+    } catch (err) {
+        console.error(err);
     }
 })
 
@@ -90,7 +90,7 @@ router.get('/:email', async (req, res) => {
 
         res.status(200).json({Data: findUser})
     } catch (err) {
-        console.log(err)
+        console.error(err)
     }
 })
 

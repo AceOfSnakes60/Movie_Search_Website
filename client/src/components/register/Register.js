@@ -31,8 +31,11 @@ function Register() {
 
     const submitUser = async (e) => {
         e.preventDefault();
-        checkPostData()
-        const response = await fetch(`http://localhost:8000/api/users`, {
+        if (password !== password2) {
+            return alert('Password do not match');
+        }
+        console.log(user)
+        const response = await fetch(`http://localhost:8000/api/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,12 +43,13 @@ function Register() {
             body: JSON.stringify(user)
         });
 
-        if (response.ok) {
-            console.log('Register user')
-        } else {
+        if (!response.ok) {
             console.log('Failed register')
+            const data = await response.json();
+            return alert(data.message);
         }
-        navigate('/login')
+        console.log("Registered user");
+
     }
 
 
