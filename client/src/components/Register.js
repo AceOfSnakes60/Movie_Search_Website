@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from "react-router-dom";
-
 import './Register.css'
 
 
@@ -31,10 +30,7 @@ function Register() {
 
     const submitUser = async (e) => {
         e.preventDefault();
-        if (password !== password2) {
-            return alert('Password do not match');
-        }
-        console.log(user)
+        checkPostData();
         const response = await fetch(`http://localhost:8000/api/users/register`, {
             method: 'POST',
             headers: {
@@ -43,12 +39,11 @@ function Register() {
             body: JSON.stringify(user)
         });
 
-        if (!response.ok) {
-            console.log('Failed register')
-            const data = await response.json();
-            return alert(data.message);
+        if (response.ok) {
+            console.log("Registered user");
+            navigate('/login')
         }
-        console.log("Registered user");
+        console.log('Failed register')
 
     }
 
