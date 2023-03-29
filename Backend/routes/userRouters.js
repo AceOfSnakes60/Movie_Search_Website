@@ -2,13 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import User from '../models/userModel.js';
-import dbURL from '../mongooDB_URL.js';
+// import dbURL from '../mongooDB_URL.js';
 
 const router = express.Router();
 
 const connectMongoose = async () => {
     try {
-        await mongoose.connect(dbURL)
+        await mongoose.connect("")
         console.log('Connect with mongooseDB')
     } catch (error) {
         console.error(error);

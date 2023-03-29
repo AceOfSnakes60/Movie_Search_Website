@@ -25,4 +25,14 @@ async function getMoviesBySearch(query){
     })
 return movies;
 }
-export {getMoviesFromApi, getMoviesByType, getMoviesBySearch};
+
+async function getPeopleBySearch(query){
+    query = query.replace(" ", "%20");
+    const people = await fetch(`http://localhost:8000/api/people/findPerson/${query}`)
+    .then(async response=>await response.json())
+    .then(data=>{
+        return data;
+    })
+return people;
+}
+export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getPeopleBySearch};

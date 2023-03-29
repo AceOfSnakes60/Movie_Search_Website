@@ -36,5 +36,14 @@
         "page": 1,
         "include_adult": false
     }
+},
+"findPerson" : {
+    "PATH":"search/person",
+    "PARAMS":{
+        "language": "en-US",
+        "query": "kill",
+        "page": 1,
+        "include_adult": false
+    }
 }
 }
