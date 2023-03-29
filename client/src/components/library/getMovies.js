@@ -27,4 +27,9 @@ async function getMovieDetails(id){
     return await response.json();
 }
 
-export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getMoviePictures, getMovieDetails};
+async function getMovieReviews(id){
+    const response = await fetch(`${SERVER_PATH}/api/movies/reviews/${id}`)
+    return await response.json();
+}
+
+export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getMoviePictures, getMovieDetails, getMovieReviews};
