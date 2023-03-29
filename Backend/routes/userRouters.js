@@ -3,6 +3,17 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import User from '../models/userModel.js';
 
+// import dbURL from '../mongooDB_URL.js';
+
+
+const connectMongoose = async () => {
+    try {
+        await mongoose.connect("")
+        console.log('Connect with mongooseDB')
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 
 const router = express.Router();

@@ -71,6 +71,15 @@ app.get('/api/movies/find/:id', (req, res)=>{
     .then((data)=>res.send(data));
 })
 
+app.get('/api/people/findPerson/:id', (req, res)=>{
+    const params = apiParams["findPerson"];
+    params.PARAMS.query = req.params.id;
+    const endpoint = getApiEndpoint(params);
+    fetch(endpoint)
+    .then(response=>response.json())
+    .then((data)=>res.send(data));
+})
+
 app.use('/api/users', router)
 
 app.listen(port, () => {console.log(`http://localhost:${port}`)});
