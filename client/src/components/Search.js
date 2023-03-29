@@ -6,11 +6,16 @@ import {getMoviesBySearch} from './library/getMovies'
 
 function SearchBar(){
     const [searchQuery, setSearchQuery]= useState('');
-
+    const navigate = useNavigate();
+    const handleClick=()=>{
+        if(searchQuery!==undefined){
+            navigate(`/search/${searchQuery.replace(" ", "%20")}`, {replace:true})
+        }
+    }
     return(            
     <div className='search-bar'>
         <input type="search" className="search" placeholder="Search for movies.." onChange={e=>setSearchQuery(e.target.value)} />
-        <button><Link to={`/search/${searchQuery.replace(" ", "%20")}`}>search</Link></button>
+        <button onClick={()=>handleClick()}>search</button>
     </div>)
 }
 
@@ -32,13 +37,22 @@ function SearchResults(){
     }
 
     return(
+        <div>
+        <div><SearchBar /></div>   
         <div className='SearchResults'>
             {foundMovies!==undefined&&foundMovies.results.map(movie=>{return(
-                <div className='movieCard' id={movie.id} onClick={()=>handleClick(movie.id)}>
-                    <h3>{movie.title}</h3>
-                    <h4>{(movie.release_date).split('-')[0]}</h4>
+                <div className='movieCard' id={movie.id} onClick={()=>handleClick(movie.id)} 
+                style={{ 
+                    backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
+                    backgroundSize: 'cover'  
+                  }}>
+                    <div>
+                    <h4>{movie.title}</h4>
+                    <h5>{(movie.release_date).split('-')[0]}</h5>
+                    </div>
                 </div>
             )})}
+        </div>
         </div>
     )
 }

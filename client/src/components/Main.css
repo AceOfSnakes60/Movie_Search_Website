@@ -12,7 +12,7 @@
     align-items: center;
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: azure;
+
 }
 
 .search-bar select {
@@ -25,25 +25,28 @@
 
 .search-bar .search {
     margin-right: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 5px;
+    border-radius: 3px;
     border: 1px solid #ccc;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .search-bar button {
-    background-color: #1c6ea4;
-    border: none;
+    background-color: #96153e;
+    border: 10px;
     color: white;
-    padding: 10px 20px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
 }
-
+.search-bar button:hover{
+    background-color: beige;
+    color: rgb(27, 27, 27);
+}
 .chooseGenre {
     display: flex;
     justify-content: center;
@@ -141,30 +144,34 @@
     justify-content: space-around;
     margin: 0;
     list-style: none;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .movieCard {
     padding: 5px;
     width: 200px;
-    height: 150px;
-    margin-top: 10px;
+    height: 300px;
+    margin-top: 1%;
+    margin-left: 1%;
     line-height: 150px;
     font-weight: bold;
     font-size: 3em;
     text-align: center;
     border: 10px;
     border-color: black;
-    background-color: darkgrey;
+}
+.movieCard div{
+    color: transparent;
+    font-size: 15px;
+    height: fit-content;
+    max-height: fit-content;
 }
 
-.h3 {
-    font-size: 0.1rem;
+.movieCard:hover > div{
+    color:rgb(27, 27, 27);
+    background-color: rgba(231, 228, 228, 0.552);
 }
-
-.h4 {
-    font-size: 0.2em;
-}
-
 /*  */
 
 .highestRated h1 {
