@@ -36,4 +36,4 @@ To run this application on your local machine, follow these steps:
 
 ## Contributors
 
-This project was built by Jakub Szczygieł, Piotr Maślanka, Piotr Gutkowski and Lean Bochenek as part of Movie Paradise MERN project.
+This project was built by Jakub Szczygieł, Piotr Maślanka, Piotr Gutkowski and Leon Bochenek as part of Movie Paradise MERN project.
