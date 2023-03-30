@@ -88,13 +88,13 @@ function Details() {
 
 
     return (
-        <div>
-            <div><SearchBar /></div>
-            <div>
-                {movieDetails !== undefined && <div className='movie'>
-                    <div className='column-1'>
-                        <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} />
-                        {userData &&
+        <div className='moviePage'>
+            <div><SearchBar /></div>   
+            <div className='movieDeets'>
+                {movieDetails !== undefined &&<div className='movie'>
+                    <div className='column-1'>                
+                    <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}/>
+                    {userData &&
                             <Button
                                 type='submit'
                                 variant="primary"
@@ -103,16 +103,17 @@ function Details() {
                                 onClick={buttonLabel === "Add to favorites" ? AddToFavorites : DeleteFromFavorites}>
                                 {buttonLabel}
                             </Button>}
-                    </div>
-                    <div className='movie-content'>
-                        <h1 className='title'>{movieDetails.title}</h1>
-                        <p className='tagline'>{movieDetails.tagline}</p>
-                        <p className='date'>{movieDetails.release_date}</p>
-                        <div className='genres'>{movieDetails.genres.map(genre => { return (<p>{genre.name}</p>); })}</div>
-                        <p className='description'>{movieDetails.overview}</p>
-                        <p className='revenue'>Revenue: {movieDetails.revenue}</p>
-                        <p className='runtime'>Runtime: {movieDetails.runtime} minutes</p>
-                        <p className='budget'>Budget: {movieDetails.budget}</p>
+                            </div>
+                        <div className='movie-content'>
+                                <h1 className='title'>{movieDetails.title}</h1>
+                                <p className='tagline'>{movieDetails.tagline}</p>
+                                <p className='date'>{movieDetails.release_date}</p>
+                                <div className='genres'>{movieDetails.genres.map(genre=>{return(<p>{genre.name}</p>);})}</div>
+                                <p className='description'>{movieDetails.overview}</p>
+                                <p className='revenue'>Revenue: {movieDetails.revenue}</p>
+                                <p className='runtime'>Runtime: {movieDetails.runtime} minutes</p>
+                                <p className='budget'>Budget: {movieDetails.budget}</p>
+                                
                     </div></div>}
             </div>
             {castList !== undefined && <div className='castList'>
