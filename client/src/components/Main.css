@@ -186,6 +186,32 @@
     background-color: rgba(231, 228, 228, 0.552);
 }
 
+.actorsCard {
+    width: 1000px;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border: 2px solid black;
+    background: radial-gradient(circle, rgb(219, 243, 243) 36%, rgb(80, 80, 80) 87%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .actorsCard p {
+    transform: translate(0%, 10%);
+    }
+
+.SearchResults .actorsCard h3 {
+        margin-right: 20px;
+}
+
+.SearchResults .actorsCard h4{
+    color: rgb(219, 7, 230)
+} 
+
+
+
 /*  */
 .highestRated-card{
     border-radius: 15px;

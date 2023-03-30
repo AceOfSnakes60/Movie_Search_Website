@@ -219,7 +219,7 @@ function SearchPeopleResults(props) {
             {props.people !== undefined && props.people.results
                 .map(person => {
                     return (
-                        <div className='movieCard'>
+                        <div class='actorsCard'>
                             <h3>{(person.name)}</h3>
                             <h4>{(person.popularity)}</h4>
                         </div>
