@@ -1,5 +1,5 @@
 body {
-    display: flex;
+
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -7,6 +7,15 @@ body {
     background-repeat: repeat;
   }
   
+  .moviePage{
+    display: grid;
+    justify-items: center;
+    grid-column-start: auto;
+
+  }
+  .moviePage:first-child{
+    grid-row-start: 1;
+  }
   .movie {
     display: flex;
     flex-direction: row;
@@ -16,8 +25,14 @@ body {
     background-color: #f2f2f2;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    grid-row-start: 2;
+    grid-column-start: 3;
+    grid-column-end: five;
 
-    max-width: 70vw;
+    max-width: 800px;
+  }
+  .movieDeets{
+    grid-row-start: 2;
   }
   
   .movie img {
@@ -70,24 +85,26 @@ body {
   }
 
   .reviews {
+    grid-row-start: 3;
+    grid-column-start: 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content:flex-start;
+    justify-content:center;
     flex-direction: row;
-    margin: 15%;
+    align-items: stretch;
+    align-content: stretch;
+    
+
   }
   
   .review {
-    align-self: center;
-    width: 45%;
     margin-bottom: 20px;
     padding: 10px;
     border: 2px solid rgb(98, 50, 50);
     background-color: rgb(244, 243, 243);
     border-radius: 5px;
     margin: 3ch;
-    max-width: 30vw;
-    max-height:fit-content;
+    max-width: 30%;
   }
   
   .review h3 {
@@ -98,7 +115,7 @@ body {
   .review p:first-of-type {
     font-style: italic;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .review p:last-of-type {

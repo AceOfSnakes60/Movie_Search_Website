@@ -1,12 +1,11 @@
 .main-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
     margin: 20px;
 }
 
 
 .search-bar {
+    margin-top: 4%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,15 +68,34 @@
 }
 
 .upcoming {
+
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 20px;
-    background-color: azure;
-}
 
+}
+.moviePreview{
+    height: 90vh;
+    width: 67.6vh;
+    display:grid;
+
+}
 .moviePreview img{
     height: 50%;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    justify-self: center;
+    margin-left: 30vw;
+    backdrop-filter: blur(10px);
+}
+.moviePreview h1{
+    grid-column-start: 3;
+    margin-top: 10vw;
+    width:30vw;
+    grid-row-start: 1;
+    justify-self: center;
+    backdrop-filter: blur(10px);
 }
 .upcoming h1 {
     font-size: 24px;
@@ -86,30 +104,25 @@
 }
 .carousel{
     height: 60vh;
+    width:100%;
 }
 
 .upcomingMovie {
 
     /*background: rgb(70, 214, 252);*/
     display:grid;
-    background: radial-gradient(circle, rgb(198, 222, 229) 16%, rgba(33, 37, 41, 0.07) 87%);
 
     color: white;
     padding-top: 20px;
     padding-bottom: 10px;
-    margin-left: 30vw;
-    width:50vw;
+    width:100vw;
     height:30vw;
     backdrop-filter: blur(10px);
 
 
     cursor: pointer;
 }
-.moviePreview{
-    height: 90vh;
-    width: 67.6vh;
 
-}
 
 .upcomingMovie .poster {
     width: fit-content;
@@ -117,7 +130,6 @@
 }
 .carousel-inner{
     height:50vh;
-    width:10vh;
 
 }
 .upcomingMovie h1 {
@@ -129,6 +141,7 @@
     font-family: monospace;
     letter-spacing: 10px;
     backdrop-filter: blur(20px);
+
 }
 
 .randomMovie {
@@ -142,12 +155,27 @@
 .card {
     margin-right: 10px;
     margin-left: 10px;
+    max-width: 15vw;
+    max-height: fit-content;
+}
+.card-body{
+    background-color: #eeeeee;
+}
+.card-body button{
+    background-color: #d01515;
+    border-color: #96153e;
+}
+.card-body button:hover{
+    background-color: #d17878;
 }
 
-.highestRated {
+.highestRated div{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 60vw;
 }
 
 
@@ -173,6 +201,7 @@
     text-align: center;
     border: 10px;
     border-color: black;
+
 }
 .movieCard div{
     color: transparent;
@@ -196,7 +225,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 700px;
+    width: 300px;
     justify-content: space-between;
     background-color: #212529;
     color: white;
@@ -205,7 +234,7 @@
 .highestRated h1 {
     font-size: 70px;
     font-weight: 600;
-    background-image: linear-gradient(to left, #3c509a, #93b3d3);
+    background-image: linear-gradient(to left, #fafafa, #e2e2e2a4);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
@@ -217,7 +246,8 @@
 }
 
 .highestRated-card .cloumn-1{
-    margin: 10px;
+ 
+    max-width: 100px;
     display: flex;
     align-items: center;
     flex-direction: column;

@@ -24,9 +24,9 @@ function Details() {
             });
     }, []);
     return (
-        <div>
+        <div className='moviePage'>
             <div><SearchBar /></div>   
-            <div>
+            <div className='movieDeets'>
                 {movieDetails !== undefined &&<div className='movie'>
                     <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}/>
                         <div className='movie-content'>
