@@ -8,7 +8,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRankingStar } from '@fortawesome/free-solid-svg-icons'
+import { faRankingStar, fa1, fa2, fa3, fa4, fa5} from '@fortawesome/free-solid-svg-icons'
+import startColor from '../images/starColor.png'
 import './Main.css'
 
 function Main() {
@@ -109,18 +110,8 @@ function Main() {
                 <SearchPeopleResults people={foundPeople} />
 
             </div>
-
-            {/* <div className="main">
-
-                    <div className="chooseGenre">
-                        <button className="genres">action</button>
-                        <button className="genres">comedy</button>
-                        <button className="genres">drama</button>
-                        <button className="genres">sci-fi</button>
-                    </div>
-                </div> */}
-
             <div className="upcoming">
+                <hr style={{ width: "80%" }} />
                 {discoverMovies &&
                     <div className="randomMovie">
                         <Card style={{ width: '18rem' }}>
@@ -130,7 +121,7 @@ function Main() {
                                 <Card.Text>
                                     {discoverMovies.results[7].overview}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Button variant="primary" onClick={() => handleClick(discoverMovies.results[7].id)}>Check</Button>
                             </Card.Body>
                         </Card>
                         <Card style={{ width: '18rem' }}>
@@ -140,7 +131,7 @@ function Main() {
                                 <Card.Text>
                                     {discoverMovies.results[8].overview}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Button variant="primary">Check</Button>
                             </Card.Body>
                         </Card>
                         <Card style={{ width: '18rem' }}>
@@ -150,7 +141,7 @@ function Main() {
                                 <Card.Text>
                                     {discoverMovies.results[10].overview}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Button variant="primary">Check</Button>
                             </Card.Body>
                         </Card>
                         <Card style={{ width: '18rem' }}>
@@ -160,7 +151,7 @@ function Main() {
                                 <Card.Text>
                                     {discoverMovies.results[3].overview}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Button variant="primary">Check</Button>
                             </Card.Body>
                         </Card>
                         <Card style={{ width: '18rem' }}>
@@ -170,19 +161,19 @@ function Main() {
                                 <Card.Text>
                                     {discoverMovies.results[14].overview}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Button variant="primary">Check</Button>
                             </Card.Body>
                         </Card>
                     </div>
                 }
-                <hr style={{width: "80%"}}/>
+                <hr style={{ width: "80%" }} />
                 <div className="highestRated">
                     <h1>TOP 5 MOVIES</h1>
-                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={0} />}</div>
-                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={1} />}</div>
-                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={2} />}</div>
-                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={3} />}</div>
-                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={4} />}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={0} number={fa1}/>}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={1} number={fa2}/>}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={2} number={fa3}/>}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={3} number={fa4}/>}</div>
+                    <div>{highestRated !== undefined && <ShowHighestRated movie={highestRated.results} index={4} number={fa5}/>}</div>
                 </div>
             </div>
         </div >
@@ -209,11 +200,15 @@ function Main() {
 
 function ShowHighestRated(props) {
     return (
-        <div>
-            <h2>{props.movie[props.index].title}</h2>
-            <h3>{props.movie[props.index].release_date}</h3>
-            <h2>{props.movie[props.index].vote_average}</h2>
-            <img src={`https://image.tmdb.org/t/p/w500${props.movie[props.index].poster_path}`} alt="top-movies"/>
+        <div className='highestRated-card'>
+            <FontAwesomeIcon icon={props.number} beat size="2xl" />
+            <div className='cloumn-1'>
+                <h2>{props.movie[props.index].title}</h2>
+                <h3>{props.movie[props.index].release_date}</h3>
+                <h2>{props.movie[props.index].vote_average}</h2>
+                <img src={startColor}/>
+            </div>
+            <img src={`https://image.tmdb.org/t/p/w500${props.movie[props.index].poster_path}`} alt="top-movies" />
         </div>)
 }
 
