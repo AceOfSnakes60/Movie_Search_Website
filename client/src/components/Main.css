@@ -81,7 +81,7 @@
 
 .upcomingMovie {
     background: rgb(70, 214, 252);
-    background: radial-gradient(circle, rgba(70, 214, 252, 1) 36%, rgba(33, 37, 41, 1) 87%);
+    background: radial-gradient(circle, rgb(42, 188, 229) 26%, rgba(33, 37, 41, 1) 84%);
     color: white;
     width: 100%;
     font-size: 1vw;
@@ -111,6 +111,7 @@
 .randomMovie {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
     margin-bottom: 20px;
     width: 100%;
 }
@@ -126,14 +127,6 @@
     align-items: center;
 }
 
-.highestRated div {
-    width: 300px;
-    height: 450px;
-    margin: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: pointer;
-}
 
 .SearchResults {
     display: flex;
@@ -143,36 +136,42 @@
     list-style: none;
 }
 
-.movieCard {
-    padding: 5px;
-    width: 200px;
-    height: 150px;
-    margin-top: 10px;
-    line-height: 150px;
-    font-weight: bold;
-    font-size: 3em;
-    text-align: center;
-    border: 10px;
-    border-color: black;
-    background-color: darkgrey;
-}
-
-.h3 {
-    font-size: 0.1rem;
-}
-
-.h4 {
-    font-size: 0.2em;
-}
 
 /*  */
+.highestRated-card{
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 700px;
+    justify-content: space-between;
+    background-color: #212529;
+    color: white;
+}
 
 .highestRated h1 {
     font-size: 70px;
     font-weight: 600;
-    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    background-image: linear-gradient(to left, #3c509a, #93b3d3);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
 }
 
+.highestRated-card img{
+    object-fit: cover;
+    width: 50%;
+}
+
+.highestRated-card .cloumn-1{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+  
