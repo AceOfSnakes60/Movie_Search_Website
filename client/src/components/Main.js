@@ -62,53 +62,27 @@ function Main() {
     return (
         <div>
             {upcomingMovies &&
-                <Carousel className="upcomingMovie">
-                    <Carousel.Item interval={2000} >
-                        <div onClick={() => handleClick(upcomingMovies.results[0].id)}>
-                            <h1>{upcomingMovies.results[0].title}</h1>
-                            <h5>{upcomingMovies.results[0].release_date}</h5>
-                            <img
-                                className="poster"
-                                src={`https://image.tmdb.org/t/p/w500${upcomingMovies.results[0].poster_path}`}
-                                alt="First slide"
-                            />
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item interval={2000} >
-                        <div onClick={() => handleClick(upcomingMovies.results[1].id)}>
-                            <h1>{upcomingMovies.results[1].title}</h1>
-                            <h5>{upcomingMovies.results[1].release_date}</h5>
-                            <img
-                                className="poster"
-                                src={`https://image.tmdb.org/t/p/w500${upcomingMovies.results[1].poster_path}`}
-                                alt="First slide"
-                            />
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item interval={2000} >
-                        <div onClick={() => handleClick(upcomingMovies.results[2].id)}>
-                            <h1>{upcomingMovies.results[2].title}</h1>
-                            <h5>{upcomingMovies.results[2].release_date}</h5>
-                            <img
-                                className="poster"
-                                src={`https://image.tmdb.org/t/p/w500${upcomingMovies.results[2].poster_path}`}
-                                alt="First slide"
-                            />
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item interval={2000} >
-                        <div onClick={() => handleClick(upcomingMovies.results[3].id)}>
-                            <h1>{upcomingMovies.results[3].title}</h1>
-                            <h5>{upcomingMovies.results[3].release_date}</h5>
-                            <img
-                                className="poster"
-                                src={`https://image.tmdb.org/t/p/w500${upcomingMovies.results[3].poster_path}`}
-                                alt="First slide"
-                            />
-                        </div>
-                    </Carousel.Item>
+    <Carousel className="upcomingMovie">{upcomingMovies.results.map((movie, index) => (
+            <Carousel.Item key={index} interval={2800} style={{ 
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
+                backgroundSize: 'cover' ,
+                backgroundBlendMode: 'multiply'
+              }}>
+                <div onClick={() => handleClick(movie.id)}>
+                    <div className='moviePreview'>
+                    <img
+                        className="poster"
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                    />
+                    <h5>{movie.release_date}</h5>
+                    </div>
+                </div>
+            </Carousel.Item>
+        ))}
+    </Carousel>
+}
 
-                </Carousel>}
             <div className='search-bar'>
                 <select onChange={handleSelectChange}>
                     <option disabled selected>What do you want to search</option>

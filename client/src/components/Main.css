@@ -12,7 +12,7 @@
     align-items: center;
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: azure;
+
 }
 
 .search-bar select {
@@ -25,23 +25,27 @@
 
 .search-bar .search {
     margin-right: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 5px;
+    border-radius: 3px;
     border: 1px solid #ccc;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .search-bar button {
-    background-color: #1c6ea4;
-    border: none;
+    background-color: #96153e;
+    border: 10px;
     color: white;
-    padding: 10px 20px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
+}
+.search-bar button:hover{
+    background-color: beige;
+    color: rgb(27, 27, 27);
 }
 
 .chooseGenre {
@@ -72,32 +76,50 @@
     background-color: azure;
 }
 
+.moviePreview img{
+    height: 50%;
+}
 .upcoming h1 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-
-
-.upcomingMovie {
-    background: rgb(70, 214, 252);
-    background: radial-gradient(circle, rgb(42, 188, 229) 26%, rgba(33, 37, 41, 1) 84%);
-    color: white;
-    width: 100%;
-    font-size: 1vw;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    overflow: hidden;
-    cursor: pointer;
+.carousel{
+    height: 60vh;
 }
 
+.upcomingMovie {
+
+    /*background: rgb(70, 214, 252);*/
+    display:grid;
+    background: radial-gradient(circle, rgb(198, 222, 229) 16%, rgba(33, 37, 41, 0.07) 87%);
+
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-left: 30vw;
+    width:50vw;
+    height:30vw;
+    backdrop-filter: blur(10px);
+
+
+    cursor: pointer;
+}
+.moviePreview{
+    height: 90vh;
+    width: 67.6vh;
+
+}
 
 .upcomingMovie .poster {
     width: fit-content;
     border-radius: 10px;
 }
+.carousel-inner{
+    height:50vh;
+    width:10vh;
 
+}
 .upcomingMovie h1 {
     font-family: monospace;
     letter-spacing: 15px;
@@ -106,6 +128,7 @@
 .upcomingMovie h5 {
     font-family: monospace;
     letter-spacing: 10px;
+    backdrop-filter: blur(20px);
 }
 
 .randomMovie {
@@ -134,8 +157,34 @@
     justify-content: space-around;
     margin: 0;
     list-style: none;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
+.movieCard {
+    padding: 5px;
+    width: 200px;
+    height: 300px;
+    margin-top: 1%;
+    margin-left: 1%;
+    line-height: 150px;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    border: 10px;
+    border-color: black;
+}
+.movieCard div{
+    color: transparent;
+    font-size: 15px;
+    height: fit-content;
+    max-height: fit-content;
+}
+
+.movieCard:hover > div{
+    color:rgb(27, 27, 27);
+    background-color: rgba(231, 228, 228, 0.552);
+}
 
 /*  */
 .highestRated-card{
