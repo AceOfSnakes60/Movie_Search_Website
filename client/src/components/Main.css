@@ -47,6 +47,7 @@
     background-color: beige;
     color: rgb(27, 27, 27);
 }
+
 .chooseGenre {
     display: flex;
     justify-content: center;
@@ -75,32 +76,48 @@
     background-color: azure;
 }
 
+.moviePreview img{
+    height: 50%;
+}
 .upcoming h1 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-
-
-.upcomingMovie {
-    background: rgb(70, 214, 252);
-    background: radial-gradient(circle, rgba(70, 214, 252, 1) 36%, rgba(33, 37, 41, 1) 87%);
-    color: white;
-    width: 100%;
-    font-size: 1vw;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    overflow: hidden;
-    cursor: pointer;
+.carousel{
+    height: 60vh;
 }
 
+.upcomingMovie {
+    /*background: rgb(70, 214, 252);*/
+    display:grid;
+    background: radial-gradient(circle, rgb(198, 222, 229) 16%, rgba(33, 37, 41, 0.07) 87%);
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-left: 30vw;
+    width:50vw;
+    height:30vw;
+    backdrop-filter: blur(10px);
+
+
+    cursor: pointer;
+}
+.moviePreview{
+    height: 90vh;
+    width: 67.6vh;
+
+}
 
 .upcomingMovie .poster {
     width: fit-content;
     border-radius: 10px;
 }
+.carousel-inner{
+    height:50vh;
+    width:10vh;
 
+}
 .upcomingMovie h1 {
     font-family: monospace;
     letter-spacing: 15px;
@@ -109,6 +126,7 @@
 .upcomingMovie h5 {
     font-family: monospace;
     letter-spacing: 10px;
+    backdrop-filter: blur(20px);
 }
 
 .randomMovie {
