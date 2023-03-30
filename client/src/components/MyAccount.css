@@ -79,4 +79,15 @@
     background-color: #ff5500;
 }
 
+.favorites-movies {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
+.favorites-movies img{
+    margin: 5px;
+    border-radius: 5px;
+    height: 250px;
+    cursor: pointer;
+}

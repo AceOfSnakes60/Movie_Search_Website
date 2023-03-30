@@ -56,6 +56,10 @@ function MyAccount() {
         navigate('/')
     }
 
+    const handleClick = (id) => {
+
+        navigate(`/movie/${id}`, { replace: true })
+    }
 
     return (
         <div className='my-account'>
@@ -69,26 +73,38 @@ function MyAccount() {
                     <p>Phone: {user.phone ? user.phone : '---'}</p>
                     <p>Day of birth: {user.birthday ? user.birthday : "---"}</p>
                     <p>Favorite movies gener: {user.gener ? user.gener : "---"}</p>
-                    <p>Favorites movies: {user.favorites.length ? user.favorites : "Add to Your Favorites"}</p>
+                    <p>Favorites movies:</p>
+                    <div className='favorites-movies'>
+                    {user.favorites.length ?
+                    user.favorites.map((elemant, index) =>
+                        <img 
+                        key={index} 
+                        src={`https://image.tmdb.org/t/p/w500${elemant.poster_path}`} 
+                        alt="Movie Poster" 
+                        onClick={() => handleClick(elemant.id)}
+                        />) 
+                        : "Add to favorites"
+                    }
+                    </div>
                 </div>
             </div>
             {displayForm &&
                 <form onSubmit={handelSubmit}>
                     <hr style={{ width: "80%" }} />
                     <label htmlFor="name">Enter your First name:</label>
-                    <input type="text" name="name" value={user.name} onChange={(e) => setUser({...user, name: e.target.value})}/>
+                    <input type="text" name="name" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} />
                     <label htmlFor="name">Enter your Last name</label>
-                    <input type="text" name="surname" value={user.lastName} onChange={(e) => setUser({...user, lastName: e.target.value})}/>
+                    <input type="text" name="surname" value={user.lastName} onChange={(e) => setUser({ ...user, lastName: e.target.value })} />
                     <label htmlFor="name">Enter your e-mail</label>
-                    <input type="text" name="email" value={user.email} onChange={(e) => setUser({...user, email: e.target.value})}/>
+                    <input type="text" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
                     <label htmlFor="name">Enter your phone number</label>
-                    <input type="text" name="number" value={user.phone} onChange={(e) => setUser({...user, phone: e.target.value})}/>
+                    <input type="text" name="number" value={user.phone} onChange={(e) => setUser({ ...user, phone: e.target.value })} />
                     <label htmlFor="name">Enter your day of birth</label>
-                    <input type="date" name="date" onChange={(e) => setUser({...user, birthday: e.target.value})}/>
+                    <input type="date" name="date" onChange={(e) => setUser({ ...user, birthday: e.target.value })} />
                     <label htmlFor="name">Choose your favorite kind of movies gener</label>
                     <select name="gener" onChange={(e) => {
                         const selectGener = e.target.value
-                        setUser(prev => ({...prev, gener: [...prev.gener, selectGener]}))
+                        setUser(prev => ({ ...prev, gener: [...prev.gener, selectGener] }))
                     }}>
                         <option value="First">---</option>
                         <option value="Action">Action</option>
