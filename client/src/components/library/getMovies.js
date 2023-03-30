@@ -43,4 +43,4 @@ async function getPeopleBySearch(query){
 return people;
 }
 
-export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getMoviePictures,getPeopleBySearch, getMovieDetails, getMovieReviews};
+export {getMoviesFromApi, getMoviesByType, getMoviesBySearch, getMoviePictures, getPeopleBySearch, getMovieDetails, getMovieReviews};

@@ -8,7 +8,8 @@ import {
     TypingIndicator
 } from '@chatscope/chat-ui-kit-react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
-import API_KEY from './api_key'
+//import API_KEY from './api_key'
+const API_KEY = 'blabla'
 
 
 function AIMovieFinder() {

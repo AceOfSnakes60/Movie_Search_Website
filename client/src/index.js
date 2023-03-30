@@ -10,7 +10,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import ErrorPage from './components/ErrorPage';
 
-import {SearchResults} from './components/Search'
+import {SearchBar, SearchResults} from './components/Search'
 import {FrontPage} from './components/Main'
 import {Details} from './components/Details'
 
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Main/>,
+      },
+      {
+        path: "/search/",
+        element: <SearchBar/>
       },
       {
         path: "/search/:query",

@@ -4,6 +4,8 @@ import { getMovieDetails, getMovieReviews } from './library/getMovies'
 import { useParams } from 'react-router-dom';
 import { SearchBar } from './Search'
 import Button from 'react-bootstrap/Button'
+import './Details.css'
+
 
 function Details() {
     const { id } = useParams();
@@ -13,6 +15,7 @@ function Details() {
     const [buttonLabel, setButtonLabel] = useState("Add to favorites");
     const storedData = localStorage.getItem('userInfo');
     const userData = JSON.parse(storedData);
+    const [castList, setCastList] = useState();
 
 
     useEffect(() => {
@@ -83,7 +86,7 @@ function Details() {
 
     return (
         <div>
-            <div><SearchBar /></div>
+            <div><SearchBar /></div>   
             <div>
                 {movieDetails !== undefined &&
                     <div style={{ backgroundImage: `https://image.tmdb.org/t/p${movieDetails.backdrop_path}` }}>
@@ -105,11 +108,28 @@ function Details() {
             </div>
             <div className='castList'></div>
             <div>{movieReviews !== undefined && movieReviews.results.map((review) => {
+                {movieDetails !== undefined &&<div className='movie'>
+                    <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}/>
+                        <div className='movie-content'>
+                                <h1 className='title'>{movieDetails.title}</h1>
+                                <p className='tagline'>{movieDetails.tagline}</p>
+                                <p className='date'>{movieDetails.release_date}</p>
+                                <div className='genres'>{movieDetails.genres.map(genre=>{return(<p>{genre.name}</p>);})}</div>
+                                <p className='description'>{movieDetails.overview}</p>
+                                <p className='revenue'>Revenue: {movieDetails.revenue}</p>
+                                <p className='runtime'>Runtime: {movieDetails.runtime} minutes</p>
+                                <p className='budget'>Budget: {movieDetails.budget}</p>
+                    </div></div>}
+            </div>
+            {castList !== undefined&&<div className='castList'>
+            
+            </div>}
+            <div className='reviews'>{movieReviews !== undefined && movieReviews.results.map((review) => {
                 return (
                     <div className='review'>
                         <h3>{review.author}</h3>
                         <p>{review.content}</p>
-                        <h4>{review.created_at}</h4>
+                        <p>{review.created_at}</p>
                     </div>);
             })}
             </div>
