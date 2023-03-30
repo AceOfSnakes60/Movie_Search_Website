@@ -1,4 +1,4 @@
-Movie Search Web Application
+#Movie Search Web Application
 This web application allows users to search for movies, register an account, add movies to their favorites, and chat with ChatGPT 3.5.
 
 Technologies Used
