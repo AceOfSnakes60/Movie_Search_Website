@@ -5,7 +5,10 @@ import {useNavigate} from "react-router-dom";
 import './Login.css'
 
 function Login() {
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    })
     const [userStatus, setUserStatus] = useState('')
 
     const {email, password} = formData
