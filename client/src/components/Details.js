@@ -40,43 +40,43 @@ function Details() {
 
     async function AddToFavorites(e) {
         const updatedUser = {
-          ...user,
-          favorites: [...user.favorites, { id: movieDetails.id, poster_path: movieDetails.poster_path }]
+            ...user,
+            favorites: [...user.favorites, { id: movieDetails.id, poster_path: movieDetails.poster_path }]
         };
-      
+
         setUser(updatedUser);
-      
+
         const response = await fetch(`http://localhost:8000/api/users/${updatedUser._id}`, {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json"
-          },
-          body: JSON.stringify(updatedUser)
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(updatedUser)
         });
-        
+
         response.ok ? setButtonLabel("Delete") : console.log("error");
-      }
-      
-      async function DeleteFromFavorites() {
+    }
+
+    async function DeleteFromFavorites() {
         const newFavorites = user.favorites.filter(fav => fav && fav.id !== movieDetails.id);
         const updatedUser = {
-          ...user,
-          favorites: newFavorites
+            ...user,
+            favorites: newFavorites
         };
-      
+
         setUser(updatedUser);
-      
+
         const response = await fetch(`http://localhost:8000/api/users/${updatedUser._id}`, {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json"
-          },
-          body: JSON.stringify(updatedUser)
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(updatedUser)
         });
-        
+
         response.ok ? setButtonLabel("Add to favorites") : console.log("error");
-      }
-      
+    }
+
 
     useEffect(() => {
         const hasMovie = user.favorites.some(fav => fav && fav.id === movieDetails?.id);
@@ -84,14 +84,14 @@ function Details() {
     }, [user.favorites, movieDetails?.id]);
 
 
+
     return (
         <div>
-            <div><SearchBar /></div>   
+            <div><SearchBar /></div>
             <div>
-                {movieDetails !== undefined &&
-                    <div style={{ backgroundImage: `https://image.tmdb.org/t/p${movieDetails.backdrop_path}` }}>
-                        <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt="Movie Poster" />
-                        {userData &&
+                    {movieDetails !== undefined &&<div className='movie'>
+                    <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}/>
+                    {userData &&
                             <Button
                                 type='submit'
                                 variant="primary"
@@ -100,16 +100,6 @@ function Details() {
                                 onClick={buttonLabel === "Add to favorites" ? AddToFavorites : DeleteFromFavorites}>
                                 {buttonLabel}
                             </Button>}
-                        <h2>{movieDetails.title}</h2>
-                        <h3>{movieDetails.tagline}</h3>
-                        <h3>{movieDetails.release_date}</h3>
-                        <p>{movieDetails.overview}</p>
-                    </div>}
-            </div>
-            <div className='castList'></div>
-            <div>{movieReviews !== undefined && movieReviews.results.map((review) => {
-                {movieDetails !== undefined &&<div className='movie'>
-                    <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}/>
                         <div className='movie-content'>
                                 <h1 className='title'>{movieDetails.title}</h1>
                                 <p className='tagline'>{movieDetails.tagline}</p>
@@ -122,7 +112,7 @@ function Details() {
                     </div></div>}
             </div>
             {castList !== undefined&&<div className='castList'>
-            
+
             </div>}
             <div className='reviews'>{movieReviews !== undefined && movieReviews.results.map((review) => {
                 return (
