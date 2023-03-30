@@ -30,11 +30,13 @@ function Details() {
     }, []);
 
     const getUser = (email) => {
-        return fetch(`http://localhost:8000/api/users/${email}`).then(res => res.json())
-    }
+        return fetch(`http://localhost:8000/api/users/${email}`).then(res => res.json());
+    };
 
     useEffect(() => {
-        getUser(userData.email).then(data => setUser(data.Data))
+        if (userData && userData.email) {
+            getUser(userData.email).then(data => setUser(data.Data))
+        }
     }, [])
 
 
