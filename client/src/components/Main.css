@@ -1,0 +1,282 @@
+.main-page {
+    display: grid;
+    margin: 20px;
+}
+
+
+.search-bar {
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+}
+
+.search-bar select {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-bar .search {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.search-bar button {
+    background-color: #96153e;
+    border: 10px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.search-bar button:hover{
+    background-color: beige;
+    color: rgb(27, 27, 27);
+}
+
+.chooseGenre {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.genres {
+    background-color: #1c6ea4;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.upcoming {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+
+}
+.moviePreview{
+    height: 90vh;
+    width: 67.6vh;
+    display:grid;
+
+}
+.moviePreview img{
+    height: 50%;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    justify-self: center;
+    margin-left: 30vw;
+    backdrop-filter: blur(10px);
+}
+.moviePreview h1{
+    grid-column-start: 3;
+    margin-top: 10vw;
+    width:30vw;
+    grid-row-start: 1;
+    justify-self: center;
+    backdrop-filter: blur(10px);
+}
+.upcoming h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.carousel{
+    height: 60vh;
+    width:100%;
+}
+
+.upcomingMovie {
+
+    /*background: rgb(70, 214, 252);*/
+    display:grid;
+
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width:100vw;
+    height:30vw;
+    backdrop-filter: blur(10px);
+
+
+    cursor: pointer;
+}
+
+
+.upcomingMovie .poster {
+    width: fit-content;
+    border-radius: 10px;
+}
+.carousel-inner{
+    height:50vh;
+
+}
+.upcomingMovie h1 {
+    font-family: monospace;
+    letter-spacing: 15px;
+}
+
+.upcomingMovie h5 {
+    font-family: monospace;
+    letter-spacing: 10px;
+    backdrop-filter: blur(20px);
+
+}
+
+.randomMovie {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.card {
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: 15vw;
+    max-height: fit-content;
+}
+.card-body{
+    background-color: #eeeeee;
+}
+.card-body button{
+    background-color: #d01515;
+    border-color: #96153e;
+}
+.card-body button:hover{
+    background-color: #d17878;
+}
+
+.highestRated div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 60vw;
+}
+
+
+.SearchResults {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 0;
+    list-style: none;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.movieCard {
+    padding: 5px;
+    width: 200px;
+    height: 300px;
+    margin-top: 1%;
+    margin-left: 1%;
+    line-height: 150px;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    border: 10px;
+    border-color: black;
+
+}
+.movieCard div{
+    color: transparent;
+    font-size: 15px;
+    height: fit-content;
+    max-height: fit-content;
+}
+
+.movieCard:hover > div{
+    color:rgb(27, 27, 27);
+    background-color: rgba(231, 228, 228, 0.552);
+}
+
+.actorsCard {
+    width: 1000px;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border: 2px solid black;
+    background: radial-gradient(circle, rgb(219, 243, 243) 36%, rgb(80, 80, 80) 87%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .actorsCard p {
+    transform: translate(0%, 10%);
+    }
+
+.SearchResults .actorsCard h3 {
+        margin-right: 20px;
+}
+
+.SearchResults .actorsCard h4{
+    color: rgb(219, 7, 230)
+} 
+
+
+
+/*  */
+.highestRated-card{
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    justify-content: space-between;
+    background-color: #212529;
+    color: white;
+}
+
+.highestRated h1 {
+    font-size: 70px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #fafafa, #e2e2e2a4);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.highestRated-card img{
+    object-fit: cover;
+    width: 50%;
+}
+
+.highestRated-card .cloumn-1{
+ 
+    max-width: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+  

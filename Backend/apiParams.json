@@ -1,0 +1,45 @@
+{
+"discover" : {
+    "PATH": "movie/popular",
+    "PARAMS":{
+        "language" : "en-US",
+        "page": 1
+    }
+},
+"topRated":{
+    "PATH": "movie/top_rated",
+    "PARAMS":{
+        "language":"en-US",
+        "page": 1
+    }
+},
+"trending":{
+    "PATH": "trending/movie/day",
+    "PARAMS":{}
+},
+"upcoming":{
+    "PATH":"movie/upcoming",
+    "PARAMS":{
+        "language": "en-US",
+        "page": 1
+    }
+},
+"find" : {
+    "PATH":"search/movie",
+    "PARAMS":{
+        "language": "en-US",
+        "query": "kill",
+        "page": 1,
+        "include_adult": false
+    }
+},
+"findPerson" : {
+    "PATH":"search/person",
+    "PARAMS":{
+        "language": "en-US",
+        "query": "kill",
+        "page": 1,
+        "include_adult": false
+    }
+}
+}
